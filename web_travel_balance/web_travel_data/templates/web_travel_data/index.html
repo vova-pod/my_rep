@@ -1,0 +1,16 @@
+<p>WEB TRAVEL BALANCE</p>
+
+{% block content %}
+
+<p>Contributed: {{ contributed }}</p>
+<p>Spent: {{ spent }}</p>
+<p>Actual balance: {{ balance }}</p>
+
+
+<ul>Balance per member
+	{% for member in members %}
+		<li>{{ member.name }} contribute: {{ member.contribute }} left: {{ member.balance }}</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}
