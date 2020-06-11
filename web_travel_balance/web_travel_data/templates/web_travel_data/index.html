@@ -1,15 +1,21 @@
-<p>WEB TRAVEL BALANCE</p>
+{% extends "web_travel_data/base.html" %}
 
 {% block content %}
 
-<p>Contributed: {{ contributed }}</p>
-<p>Spent: {{ spent }}</p>
+<p>
+	<a href="{% url 'web_travel_data:contributions' %}">Contributed: {{ contributed }}</a>
+</p>
+<p>
+	<a href="{% url 'web_travel_data:expences' %}">Spent: {{ spent }}</a>
+</p>
 <p>Actual balance: {{ balance }}</p>
 
 
 <ul>Balance per member
 	{% for member in members %}
-		<li>{{ member.name }} contribute: {{ member.contribute }} left: {{ member.balance }}</li>
+		<li>
+			<a href="{% url 'web_travel_data:member_contribution' member.id %}">{{ member.name }} contribute: {{ member.contribute }} left: {{ member.balance }}</a>
+		</li>
 	{% endfor %}
 </ul>
 

@@ -4,8 +4,9 @@ from django.db import models
 class Member(models.Model):
     """A member of team"""
     name = models.CharField(max_length=200)
-    balance = models.DecimalField(max_digits=10, decimal_places=2)
-    contribute = models.DecimalField(max_digits=10, decimal_places=2)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    contribute = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

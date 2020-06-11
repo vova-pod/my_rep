@@ -1,0 +1,13 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Edit member info:</p>
+
+	<form action="{% url 'web_travel_data:edit_member' member.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Save changes</button>
+	</form>
+
+{% endblock content %}

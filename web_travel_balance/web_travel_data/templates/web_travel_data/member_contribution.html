@@ -1,0 +1,19 @@
+{% extends 'web_travel_data/base.html' %}
+
+{% block content %}
+
+<p>{{ member }}</p>
+
+<p>Contributions:</p>
+<ul>
+	{% for contribution in contributions %}
+		<li>
+			<p>{{ contribution.date_added|date:'M d, Y H:i' }}</p>
+			<p>{{ contribution.amount }}</p>
+		</li>
+	{% empty %}
+		<li>No contribution has been made yet.</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}

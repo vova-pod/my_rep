@@ -1,0 +1,19 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Members</p>
+
+	<ul>
+		{% for member in members %}
+			<li>
+				<a href="{% url 'web_travel_data:edit_member' member.id %}">{{ member }}</a>
+			</li>
+		{% empty %}
+			<li>No members have been added yet.</li>
+		{% endfor %}
+	</ul>
+
+	<a href="{% url 'web_travel_data:new_member' %}">Add a new member</a>
+
+{% endblock content %}

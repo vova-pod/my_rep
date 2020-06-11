@@ -1,0 +1,17 @@
+{% extends 'web_travel_data/base.html' %}
+
+{% block content %}
+
+<p>Expences:</p>
+<ul>
+	{% for expence in expences %}
+		<li>
+			<p>{{ expence.date_added|date:'M d, Y H:i' }}</p>
+			<p>{{ expence.amount }} for {{ expence.purpose }}</p>
+		</li>
+	{% empty %}
+		<li>No expences has been made yet.</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}
