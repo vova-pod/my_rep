@@ -8,6 +8,8 @@ class Member(models.Model):
     contribute = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
+    return_to_close = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -16,19 +18,13 @@ class Member(models.Model):
 
 class Contribution(models.Model):
     """What is amount was given per time"""
-    member = models.ForeignKey(Member, on_delete=models.PROTECT)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         """Return a string representation of the model"""
         return f"{self.amount}"
-
-    def get_amount(self):
-        return self.amount
-
-    def get_member(self):
-        return self.member
 
 
 class Expence(models.Model):
@@ -41,5 +37,14 @@ class Expence(models.Model):
         """Return a string representation of the model"""
         return f"{self.purpose}: {self.amount}"
 
-    def get_amount(self):
-        return self.amount
+
+class Exeption(models.Model):
+    """ Exeptions for spendings and members"""
+    name = models.CharField(max_length=200)
+    member = models.ManyToManyField(Member)
+    expence = models.ManyToManyField(Expence)
+    expences = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def __str__(self):
+        """Return a string representation of the model"""
+        return self.name

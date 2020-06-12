@@ -10,13 +10,23 @@
 </p>
 <p>Actual balance: {{ balance }}</p>
 
+<p>All Exeption Expences: {{ all_exeption_expences }}</p>
+
 
 <ul>Balance per member
 	{% for member in members %}
 		<li>
-			<a href="{% url 'web_travel_data:member_contribution' member.id %}">{{ member.name }} contribute: {{ member.contribute }} left: {{ member.balance }}</a>
+			<a href="{% url 'web_travel_data:member_contribution' member.id %}">{{ member.name }} contribute: {{ member.contribute }} balance: {{ member.balance }} return to close {{ member.return_to_close }}</a>
 		</li>
 	{% endfor %}
 </ul>
+
+<ul>Spending per exeption
+	{% for exeption in exeptions %}
+		<li>On {{ exeption.name }} were spent {{ exeption.expences }}</li>
+	{% endfor %}
+</ul>
+
+
 
 {% endblock content %}
