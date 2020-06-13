@@ -1,0 +1,35 @@
+{% extends 'web_travel_data/base.html' %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<p>Exeptions:</p>
+<ul>
+	{% for exeption in exeptions %}
+		<li>
+			<a href="{% url 'web_travel_data:edit_exeption' exeption.id %}">{{ exeption }}</a>
+			<ul>
+				{% for member in exeption.member.all %}
+					<li>
+						<p>{{ member }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	{% empty %}
+		<li>No exeption have been established yet.</li>
+	{% endfor %}
+</ul>
+
+<a href="{% url 'web_travel_data:new_exeption' %}">Add a new exeption</a>
+
+
+{% endblock content %}

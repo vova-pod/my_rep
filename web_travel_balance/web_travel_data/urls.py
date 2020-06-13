@@ -27,5 +27,14 @@ urlpatterns = [
     # Page to edit member info
     path('edit_member/edit_member_<int:member_id>/',
          views.edit_member, name='edit_member'),
+    # Page to show exeptions
+    path('exeptions/', views.exeptions, name='exeptions'),
+    # Page for adding new exeptions
+    path('new_exeption/', views.new_exeption, name='new_exeption'),
+    # Page to edit exeption
+    path('edit_exeption/edit_exeption_<int:exeption_id>',
+         views.edit_exeption, name='edit_exeption'),
+    path('delete_exeption/delete_exeption_<int:exeption_id>',
+         views.delete_exeption, name='delete_exeption'),
 
 ]

@@ -1,0 +1,14 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Add a new exeption:</p>
+
+	<form action="{% url 'web_travel_data:new_exeption' %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Add exeption</button>
+	</form>
+
+	
+{% endblock content %}

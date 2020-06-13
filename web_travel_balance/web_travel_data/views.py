@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Member, Contribution, Expence, Exeption
-from .forms import MemberForm, ContributionForm, ExpenceForm
+from .forms import MemberForm, ContributionForm, ExpenceForm, ExeptionForm
 from .balance_data import *
 
 
 def index(request):
     """The home page for Web Travel Balance"""
+    all_expences()
+    balance()
+    all_contributions()
     contributions_per_member()
-    balance_per_member()
     expences_per_exeption()
     all_exeption_expences()
+    base_expences_per_member()
+    balance_per_member()
     return_to_close()
     members = Member.objects.order_by('date_added')
     exeptions = Exeption.objects.all()
@@ -61,7 +66,7 @@ def new_contribution(request):
 
 
 def new_expence(request):
-    """ Add new contribution for particular member"""
+    """ Add new expence"""
 
     if request.method != 'POST':
         # No data submitted; create a blank form.
@@ -120,3 +125,58 @@ def edit_member(request, member_id):
 
     context = {'member': member, 'form': form}
     return render(request, 'web_travel_data/edit_member.html', context)
+
+
+def exeptions(request):
+    """Show all exeptions"""
+    exeptions = Exeption.objects.all()
+    context = {'exeptions': exeptions}
+    return render(request, 'web_travel_data/exeptions.html', context)
+
+
+def new_exeption(request):
+    """Add new exeption"""
+    if request.method != 'POST':
+        # No data submitted; create a blank form.
+        form = ExeptionForm()
+    else:
+        # POST data submitted, process data
+        form = ExeptionForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('web_travel_data:exeptions')
+
+    # Display a blank or invalid form.
+    context = {'form': form}
+    return render(request, 'web_travel_data/new_exeption.html', context)
+
+
+def edit_exeption(request, exeption_id):
+    """Edit an exeption"""
+    exeption = Exeption.objects.get(id=exeption_id)
+
+    if request.method != 'POST':
+        # Initial request; prefill form with current entry.
+        form = ExeptionForm(instance=exeption)
+    else:
+        # POST data submitted, process data
+        form = ExeptionForm(instance=exeption, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('web_travel_data:exeptions')
+
+    context = {'exeption': exeption, 'form': form}
+    return render(request, 'web_travel_data/edit_exeption.html', context)
+
+
+def delete_exeption(request, exeption_id):
+    """Delete an exeption"""
+    exeption = Exeption.objects.get(id=exeption_id)
+
+    if request.method == 'POST':
+        exeption.delete()
+        messages.success(request, "Exeption has been successfully deleted.")
+        return redirect('web_travel_data:exeptions')
+
+    context = {'exeption': exeption}
+    return render(request, 'web_travel_data/delete_exeption.html', context)

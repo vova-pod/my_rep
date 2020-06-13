@@ -1,0 +1,15 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Edit exeption info:</p>
+
+	<form action="{% url 'web_travel_data:edit_exeption' exeption.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Save changes</button>
+	</form>
+
+<a href="{% url 'web_travel_data:delete_exeption' exeption.id %}">Delete an exeption</a>
+
+{% endblock content %}
