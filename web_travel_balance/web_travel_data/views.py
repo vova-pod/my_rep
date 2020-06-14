@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.core.mail import send_mail
 from .models import Member, Contribution, Expence, Exeption
 from .forms import MemberForm, ContributionForm, ExpenceForm, ExeptionForm
 from .balance_data import *
@@ -180,3 +181,22 @@ def delete_exeption(request, exeption_id):
 
     context = {'exeption': exeption}
     return render(request, 'web_travel_data/delete_exeption.html', context)
+
+
+def email_member_report(request, member_id):
+    """Send email with member contribution data"""
+    member = Member.objects.get(id=member_id)
+
+    if request.method == 'POST':
+        send_mail(
+            'web travel data report',
+            create_member_report(member_id),
+            'cutterw7@gmail.com',
+            [member.email],
+            fail_silently=False,
+        )
+        messages.success(request, "Email has been sent.")
+        return redirect('web_travel_data:member_contribution', member.id)
+
+    context = {'member': member}
+    return render(request, 'web_travel_data/email_member_report.html', context)

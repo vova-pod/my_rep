@@ -36,5 +36,7 @@ urlpatterns = [
          views.edit_exeption, name='edit_exeption'),
     path('delete_exeption/delete_exeption_<int:exeption_id>',
          views.delete_exeption, name='delete_exeption'),
+    path('email_member_report/<int:member_id>',
+         views.email_member_report, name='email_member_report'),
 
 ]

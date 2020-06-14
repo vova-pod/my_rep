@@ -1,4 +1,7 @@
 from .models import Member, Contribution, Expence, Exeption
+from django.db import connection
+from prettytable import PrettyTable
+from datetime import datetime
 
 
 def balance():
@@ -83,3 +86,15 @@ def return_to_close():
         member.return_to_close = member.balance + \
             (balance() / len(Member.objects.all()))
         member.save()
+
+
+def create_member_report(id):
+    """Create member report string table"""
+    member = Member.objects.get(id=id)
+    contributions = member.contribution_set.order_by('date_added')
+    member_report = PrettyTable()
+    member_report.field_names = ["Date", "Amount"]
+    for contribution in contributions:
+        member_report.add_row(
+            [contribution.date_added.strftime("%d/%m/%Y"), contribution.amount])
+    return str(member_report)

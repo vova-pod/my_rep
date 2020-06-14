@@ -1,0 +1,14 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Send report to {{ member }} on email: {{ member.email }}.</p>
+
+	<form action="{% url 'web_travel_data:email_member_report' member.id %}" method='post'>
+		{% csrf_token %}
+		To send press button.
+		<button name="submit">YES</button>
+		<a href="{% url 'web_travel_data:exeptions' %}">CANCEL</a>
+	</form>
+
+{% endblock content %}

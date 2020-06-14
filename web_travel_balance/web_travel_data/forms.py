@@ -6,7 +6,7 @@ from .models import Member, Contribution, Expence, Exeption
 class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
-        fields = ['name']
+        fields = ['name', 'email']
 
 
 class ContributionForm(forms.ModelForm):

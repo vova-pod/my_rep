@@ -10,7 +10,7 @@ class Member(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     return_to_close = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
-    email = models.EmailField()
+    email = models.EmailField(default='')
 
     def __str__(self):
         """Return a string representation of the model"""
