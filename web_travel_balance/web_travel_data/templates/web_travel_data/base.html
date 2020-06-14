@@ -1,5 +1,12 @@
 <p>
 	<a href="{% url 'web_travel_data:index' %}">WEB TRAVEL DATA</a> - 
+	{% if user.is_authenticated %}
+		Hello, {{ user.username }}
+		<a href="{% url 'users:logout' %}">LOG OUT</a> -
+	{% else %}
+		<a href="{% url 'users:login' %}">LOG IN</a> - 
+		<a href="{% url 'users:register' %}">REGISTER</a> - 
+	{% endif %}
 	<a href="{% url 'web_travel_data:members' %}">MEMBERS</a> -
 	<a href="{% url 'web_travel_data:new_contribution' %}">ADD CONTRIBUTION</a> -
 	<a href="{% url 'web_travel_data:new_expence' %}">ADD SPENDING</a> -

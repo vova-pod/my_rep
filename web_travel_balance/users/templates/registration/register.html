@@ -1,0 +1,15 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<form method="post" action="{% url 'users:register' %}">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+		<button name="submitt">Register</button>
+		<input type="hidden" name="next" value="{% url 'web_travel_data:index' %}" />
+	</form>
+
+
+
+{% endblock content %}
