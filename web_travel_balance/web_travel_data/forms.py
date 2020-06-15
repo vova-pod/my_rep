@@ -15,6 +15,10 @@ class ContributionForm(forms.ModelForm):
         fields = ['member', 'amount']
         widgets = {'member': forms.Select}
 
+    def __init__(self, user, *args, **kwargs):
+        super(ContributionForm, self).__init__(*args, **kwargs)
+        self.fields['member'].queryset = Member.objects.filter(owner=user)
+
 
 class ExpenceForm(forms.ModelForm):
     class Meta:
@@ -28,3 +32,8 @@ class ExeptionForm(forms.ModelForm):
         fields = ['name', 'member', 'expence']
         widgets = {'member': forms.CheckboxSelectMultiple,
                    'expence': forms.CheckboxSelectMultiple}
+
+    def __init__(self, user, *args, **kwargs):
+        super(ExeptionForm, self).__init__(*args, **kwargs)
+        self.fields['member'].queryset = Member.objects.filter(owner=user)
+        self.fields['expence'].queryset = Expence.objects.filter(owner=user)
