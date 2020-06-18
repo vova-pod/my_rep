@@ -1,17 +1,49 @@
-{% extends 'web_travel_data/base.html' %}
+{% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
-<p>Expences:</p>
-<ul>
-	{% for expence in expences %}
-		<li>
-			<p>{{ expence.date_added|date:'M d, Y H:i' }}</p>
-			<p>{{ expence.amount }} for {{ expence.purpose }}</p>
-		</li>
-	{% empty %}
-		<li>No expences has been made yet.</li>
-	{% endfor %}
-</ul>
+	<form action="{% url 'web_travel_data:expences' %}" method="post" class="form-inline justify-content-between mb-3">
+		{% csrf_token %}
+		
+		{% for field in form %}
+		<div class="form-group">
+    <label>{{ field.label }}&nbsp;&nbsp;</label>
+    {{ field }}
+    
+  </div>
+    {% endfor %}
+		{% buttons %}
+		<button name="submit" class="btn btn-dark">Add spending</button>
+		{% endbuttons %}
+	</form>
+	
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for expence in expences %}
+  	<tr>
+      <th scope="row">{{ expence.i }}</th>
+      <td>{{ expence.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ expence.amount }}</td>
+      <td>{{ expence.purpose }}</td>
+    </tr>
+    {% empty %}
+    <th>No expences has been made yet.</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    {% endfor %}
+  </tbody>
+</table>
+
 
 {% endblock content %}

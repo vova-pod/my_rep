@@ -85,11 +85,16 @@ def balance_per_member(request_user):
 def return_to_close(request_user):
     """How much shell we return to member to close balance or take"""
     if len(Member.objects.filter(owner=request_user)) != 0:
-        for member in Member.objects.filter(owner=request_user):
-            member.return_to_close = member.balance + \
-                decimal.Decimal(balance(request_user) /
-                                len(Member.objects.filter(owner=request_user)))
-            member.save()
+        if balance(request_user) >= 0:
+            for member in Member.objects.filter(owner=request_user):
+                member.return_to_close = member.balance + \
+                    decimal.Decimal(balance(request_user) /
+                                    len(Member.objects.filter(owner=request_user)))
+                member.save()
+        else:
+            for member in Member.objects.filter(owner=request_user):
+                member.return_to_close = member.balance
+                member.save()
 
 
 def create_member_report(id):

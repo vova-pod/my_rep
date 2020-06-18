@@ -12,18 +12,20 @@ class MemberForm(forms.ModelForm):
 class ContributionForm(forms.ModelForm):
     class Meta:
         model = Contribution
-        fields = ['member', 'amount']
+        fields = ['amount', 'member', 'note']
+        labels = {'amount': 'Amount', 'member': 'Member', 'note': 'Note'}
         widgets = {'member': forms.Select}
 
     def __init__(self, user, *args, **kwargs):
         super(ContributionForm, self).__init__(*args, **kwargs)
         self.fields['member'].queryset = Member.objects.filter(owner=user)
+        self.fields['note'].required = False
 
 
 class ExpenceForm(forms.ModelForm):
     class Meta:
         model = Expence
-        fields = ['purpose', 'amount']
+        fields = ['amount', 'purpose']
 
 
 class ExeptionForm(forms.ModelForm):

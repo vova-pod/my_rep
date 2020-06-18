@@ -1,32 +1,41 @@
 {% extends "web_travel_data/base.html" %}
 
+{% block page_header %}
+
+{% endblock page_header %}
+
 {% block content %}
 
-<p>
-	<a href="{% url 'web_travel_data:contributions' %}">Contributed: {{ contributed }}</a>
-</p>
-<p>
-	<a href="{% url 'web_travel_data:expences' %}">Spent: {{ spent }}</a>
-</p>
-<p>Actual balance: {{ balance }}</p>
-
-<p>All Exeption Expences: {{ all_exeption_expences }}</p>
-
-
-<ul>Balance per member
-	{% for member in members %}
-		<li>
-			<a href="{% url 'web_travel_data:member_contribution' member.id %}">{{ member.name }} contribute: {{ member.contribute }} balance: {{ member.balance }} return to close {{ member.return_to_close }}</a>
-		</li>
-	{% endfor %}
-</ul>
-
-<ul>Spending per exeption
-	{% for exeption in exeptions %}
-		<li>On {{ exeption.name }} were spent {{ exeption.expences }}</li>
-	{% endfor %}
-</ul>
-
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Crew Member</th>
+      <th scope="col">Contribution</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Closing Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for member in members %}
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:member_contribution' member.id %}">
+      <th scope="row">{{ member.i }}</th>
+      <td>{{ member.name }}</td>
+      <td>{{ member.contribute }}</td>
+      <td>{{ member.balance }}</td>
+      <td>{{ member.return_to_close }}</td>
+    </tr>
+    {% endfor %}
+    <tr class="clickable-row" data-href="{% url 'web_travel_data:new_member' %}">
+      <th>+</th>
+      <td><b>Add Member</b></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 
 {% endblock content %}
+

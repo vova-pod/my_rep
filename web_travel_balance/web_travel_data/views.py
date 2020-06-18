@@ -12,29 +12,22 @@ from .balance_data import *
 def index(request):
     """The home page for Web Travel Balance"""
 
-    all_expences(request.user)
-    all_contributions(request.user)
-    balance(request.user)
     contributions_per_member(request.user)
     expences_per_exeption(request.user)
-    all_exeption_expences(request.user)
+    aee = all_exeption_expences(request.user)
     base_expences_per_member(request.user)
     balance_per_member(request.user)
     return_to_close(request.user)
 
     members = Member.objects.filter(owner=request.user).order_by('date_added')
+    i = 0
+    for member in members:
+        i += 1
+        member.i = i
     exeptions = Exeption.objects.filter(owner=request.user)
-    context = {'balance': balance(request.user), 'contributed': all_contributions(request.user), 'spent': all_expences(request.user),
-               'members': members, 'exeptions': exeptions, 'all_exeption_expences': all_exeption_expences(request.user)}
+    context = {'members': members, 'exeptions': exeptions,
+               'all_exeption_expences': aee}
     return render(request, 'web_travel_data/index.html', context)
-
-
-@login_required
-def members(request):
-    """Show all members"""
-    members = Member.objects.filter(owner=request.user).order_by('date_added')
-    context = {'members': members}
-    return render(request, 'web_travel_data/members.html', context)
 
 
 @login_required
@@ -58,7 +51,7 @@ def new_member(request):
 
 
 @login_required
-def new_contribution(request):
+def contributions(request):
     """ Add new contribution for particular member"""
 
     if request.method != 'POST':
@@ -71,15 +64,21 @@ def new_contribution(request):
             new_contribution = form.save(commit=False)
             new_contribution.owner = request.user
             form.save()
-            return redirect('web_travel_data:index')
+            return redirect('web_travel_data:contributions')
 
     # Display a blank or invalid form.
-    context = {'form': form}
-    return render(request, 'web_travel_data/new_contribution.html', context)
+    contributions = Contribution.objects.filter(
+        owner=request.user).order_by('-date_added')
+    i = 0
+    for contribution in contributions:
+        i += 1
+        contribution.i = i
+    context = {'form': form, 'contributions': contributions}
+    return render(request, 'web_travel_data/contributions.html', context)
 
 
 @login_required
-def new_expence(request):
+def expences(request):
     """ Add new expence"""
 
     if request.method != 'POST':
@@ -92,11 +91,17 @@ def new_expence(request):
             new_expence = form.save(commit=False)
             new_expence.owner = request.user
             form.save()
-            return redirect('web_travel_data:index')
+            return redirect('web_travel_data:expences')
 
     # Display a blank or invalid form.
-    context = {'form': form}
-    return render(request, 'web_travel_data/new_expence.html', context)
+    expences = Expence.objects.filter(
+        owner=request.user).order_by('date_added')
+    i = 0
+    for expence in expences:
+        i += 1
+        expence.i = i
+    context = {'form': form, 'expences': expences}
+    return render(request, 'web_travel_data/expences.html', context)
 
 
 @login_required
@@ -110,26 +115,6 @@ def member_contribution(request, member_id):
     contributions = member.contribution_set.order_by('date_added')
     context = {'member': member, 'contributions': contributions}
     return render(request, 'web_travel_data/member_contribution.html', context)
-
-
-@login_required
-def expences(request):
-    """ Show all expences"""
-
-    expences = Expence.objects.filter(
-        owner=request.user).order_by('date_added')
-    context = {'expences': expences}
-    return render(request, 'web_travel_data/expences.html', context)
-
-
-@login_required
-def contributions(request):
-    """ Show all contributions"""
-
-    contributions = Contribution.objects.filter(
-        owner=request.user).order_by('date_added')
-    context = {'contributions': contributions}
-    return render(request, 'web_travel_data/contributions.html', context)
 
 
 @login_required
@@ -148,7 +133,7 @@ def edit_member(request, member_id):
         form = MemberForm(instance=member, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('web_travel_data:members')
+            return redirect('web_travel_data:member_contribution', member_id)
 
     context = {'member': member, 'form': form}
     return render(request, 'web_travel_data/edit_member.html', context)
@@ -157,8 +142,13 @@ def edit_member(request, member_id):
 @login_required
 def exeptions(request):
     """Show all exeptions"""
+    aee = all_exeption_expences(request.user)
     exeptions = Exeption.objects.filter(owner=request.user)
-    context = {'exeptions': exeptions}
+    i = 0
+    for exeption in exeptions:
+        i += 1
+        exeption.i = i
+    context = {'exeptions': exeptions, 'all_exeption_expences': aee}
     return render(request, 'web_travel_data/exeptions.html', context)
 
 

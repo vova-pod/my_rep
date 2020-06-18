@@ -1,5 +1,6 @@
 {% extends 'web_travel_data/base.html' %}
 
+
 {% block content %}
 
 {% if messages %}
@@ -11,25 +12,36 @@
 {% endif %}
 
 
-<p>Exeptions:</p>
-<ul>
-	{% for exeption in exeptions %}
-		<li>
-			<a href="{% url 'web_travel_data:edit_exeption' exeption.id %}">{{ exeption }}</a>
-			<ul>
-				{% for member in exeption.member.all %}
-					<li>
-						<p>{{ member }}</p>
-					</li>
-				{% endfor %}
-			</ul>
-		</li>
-	{% empty %}
-		<li>No exeption have been established yet.</li>
-	{% endfor %}
-</ul>
-
-<a href="{% url 'web_travel_data:new_exeption' %}">Add a new exeption</a>
-
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Exeption</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Members</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for exeption in exeptions %}
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' exeption.id %}">
+      <th scope="row">{{ exeption.i }}</th>
+      <td>{{ exeption.name }}</td>
+      <td>{{ exeption.expences }}</td>
+      <td>{% for member in exeption.member.all %}{{ member }}&nbsp;{% endfor %}</td>
+    </tr>
+    {% empty %}
+    <th></th>
+    <th>No exeptions has been set yet.</th>
+    <td></td>
+    <td></td>
+    {% endfor %}
+    <tr class="clickable-row" data-href="{% url 'web_travel_data:new_exeption' %}">
+      <th>+</th>
+      <th>Add Exeption</th>
+      <td></td>
+      <td></td> 
+    </tr>
+  </tbody>
+</table>
 
 {% endblock content %}

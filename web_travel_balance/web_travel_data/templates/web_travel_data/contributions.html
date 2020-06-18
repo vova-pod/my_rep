@@ -1,17 +1,52 @@
-{% extends 'web_travel_data/base.html' %}
+{% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
-<p>Contributions:</p>
-<ul>
-	{% for contribution in contributions %}
-		<li>
-			<p>{{ contribution.date_added|date:'M d, Y H:i' }}</p>
-			<p>{{ contribution.amount }} by {{ contribution.member }}</p>
-		</li>
-	{% empty %}
-		<li>No contributions have been made yet.</li>
-	{% endfor %}
-</ul>
+	<form action="{% url 'web_travel_data:contributions' %}" method="post" class="form-inline justify-content-between mb-3">
+		{% csrf_token %}
+		
+		{% for field in form %}
+		<div class="form-group">
+    <label>{{ field.label }}&nbsp;&nbsp;</label>
+    {{ field }}
+    
+  </div>
+    {% endfor %}
+		{% buttons %}
+		<button name="submit" class="btn btn-dark">Add contribution</button>
+		{% endbuttons %}
+	</form>
+	
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Member</th>
+      <th scope="col">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for contribution in contributions %}
+  	<tr>
+      <th scope="row">{{ contribution.i }}</th>
+      <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ contribution.amount }}</td>
+      <td>{{ contribution.member }}</td>
+      <td>{{ contribution.note }}</td>
+    </tr>
+    {% empty %}
+    <th>No contributions has been made yet.</th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    {% endfor %}
+  </tbody>
+</table>
+
 
 {% endblock content %}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Member(models.Model):
     """A member of team"""
     name = models.CharField(max_length=200)
+    i = models.IntegerField(default=0)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     contribute = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
@@ -25,6 +26,8 @@ class Contribution(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    note = models.CharField(max_length=255, default='')
+    i = models.IntegerField(default=0)
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -37,6 +40,8 @@ class Expence(models.Model):
     purpose = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    note = models.CharField(max_length=255, default='')
+    i = models.IntegerField(default=0)
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -50,6 +55,7 @@ class Exeption(models.Model):
     expence = models.ManyToManyField(Expence)
     expences = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    i = models.IntegerField(default=0)
 
     def __str__(self):
         """Return a string representation of the model"""

@@ -35,6 +35,10 @@ INSTALLED_APPS = [
     # My apps
     'web_travel_data',
     'users',
+
+    # Third party apps
+    'bootstrap4',
+
     # Default Django apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -67,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'web_travel_data.context_processors.balance_context',
             ],
         },
     },
