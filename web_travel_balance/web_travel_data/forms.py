@@ -25,13 +25,19 @@ class ContributionForm(forms.ModelForm):
 class ExpenceForm(forms.ModelForm):
     class Meta:
         model = Expence
-        fields = ['amount', 'purpose']
+        fields = ['amount', 'purpose', 'note']
+
+    def __init__(self, *args, **kwargs):
+        super(ExpenceForm, self).__init__(*args, **kwargs)
+        self.fields['note'].required = False
 
 
 class ExeptionForm(forms.ModelForm):
     class Meta:
         model = Exeption
-        fields = ['name', 'member', 'expence']
+        fields = ['name', 'note', 'member', 'expence']
+        labels = {'name': 'Exeption',
+                  'member': 'Members', 'expence': 'Expences'}
         widgets = {'member': forms.CheckboxSelectMultiple,
                    'expence': forms.CheckboxSelectMultiple}
 
@@ -39,3 +45,4 @@ class ExeptionForm(forms.ModelForm):
         super(ExeptionForm, self).__init__(*args, **kwargs)
         self.fields['member'].queryset = Member.objects.filter(owner=user)
         self.fields['expence'].queryset = Expence.objects.filter(owner=user)
+        self.fields['note'].required = False

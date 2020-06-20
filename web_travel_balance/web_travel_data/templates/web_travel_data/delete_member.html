@@ -1,0 +1,14 @@
+{% extends "web_travel_data/base.html" %}
+
+{% block content %}
+
+	<p>Delete member "{{ member }}"?</p>
+
+	<form action="{% url 'web_travel_data:delete_member' member.id %}" method='post'>
+		{% csrf_token %}
+		Are yoy sure you want to delete this member?
+		<button name="submit">YES</button>
+		<a href="{% url 'web_travel_data:exeptions' %}">CANCEL</a>
+	</form>
+
+{% endblock content %}

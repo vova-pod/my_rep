@@ -11,27 +11,29 @@
 </ul>
 {% endif %}
 
+<p>Press row to edit exeption or '+' to add exeption</p>
 
 <table class="table table-hover">
   <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
+    <tr>      
       <th scope="col">Exeption</th>
       <th scope="col">Amount</th>
       <th scope="col">Members</th>
+      <th scope="col">Note</th>
     </tr>
   </thead>
   <tbody>
   	{% for exeption in exeptions %}
-  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' exeption.id %}">
-      <th scope="row">{{ exeption.i }}</th>
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' exeption.id %}">      
       <td>{{ exeption.name }}</td>
       <td>{{ exeption.expences }}</td>
-      <td>{% for member in exeption.member.all %}{{ member }}&nbsp;{% endfor %}</td>
+      <td>{% for member in exeption.member.all %}<div>{{ member }}</div>{% endfor %}</td>
+      <td>{{ exeption.note }}</td>
     </tr>
     {% empty %}
     <th></th>
     <th>No exeptions has been set yet.</th>
+    <td></td>
     <td></td>
     <td></td>
     {% endfor %}
@@ -39,7 +41,7 @@
       <th>+</th>
       <th>Add Exeption</th>
       <td></td>
-      <td></td> 
+      <td></td>       
     </tr>
   </tbody>
 </table>

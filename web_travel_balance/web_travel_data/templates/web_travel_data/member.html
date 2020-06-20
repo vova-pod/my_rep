@@ -1,9 +1,17 @@
-{% extends "web_travel_data/base.html" %}
+{% extends 'web_travel_data/base.html' %}
 {% load bootstrap4 %}
 
 {% block content %}
 
-	<form action="{% url 'web_travel_data:contributions' %}" method="post" class="form-inline justify-content-between mb-3">
+{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+{% endif %}
+
+<form action="{% url 'web_travel_data:member' member.id %}" method="post" class="form-inline justify-content-between mb-3">
 		{% csrf_token %}
 		
 		{% for field in form %}
@@ -14,36 +22,37 @@
   </div>
     {% endfor %}
 		{% buttons %}
-		<button name="submit" class="btn btn-dark">Add contribution</button>
+		<button name="submit" class="btn btn-dark">Save changes</button>
 		{% endbuttons %}
 	</form>
-	
+
 
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
       <th scope="col">Date</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Member</th>
-      <th scope="col">Note</th>
+      <th scope="col">Contribution</th>
     </tr>
   </thead>
   <tbody>
   	{% for contribution in contributions %}
-  	<tr>      
+  	<tr>
       <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
-      <td>{{ contribution.member }}</td>
-      <td>{{ contribution.note }}</td>
     </tr>
     {% empty %}
     <th>No contributions has been made yet.</th>
-    <td></td>
-    <td></td>
     <td></td>    
     {% endfor %}
   </tbody>
 </table>
 
+<div>
+<a href="{% url 'web_travel_data:email_member_report' member.id %}">Send report to this member</a>
+</div>
+<div>
+<a href="{% url 'web_travel_data:delete_member' member.id %}">Delete member</a>
+</div>
 
 {% endblock content %}
+

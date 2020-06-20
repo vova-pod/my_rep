@@ -21,26 +21,25 @@
 
 <table class="table table-hover">
   <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
+    <tr>      
       <th scope="col">Date</th>
       <th scope="col">Amount</th>
       <th scope="col">Purpose</th>
+      <th scope="col">Note</th>
     </tr>
   </thead>
   <tbody>
   	{% for expence in expences %}
-  	<tr>
-      <th scope="row">{{ expence.i }}</th>
+  	<tr>      
       <td>{{ expence.date_added|date:'d M Y H:i' }}</td>
       <td>{{ expence.amount }}</td>
       <td>{{ expence.purpose }}</td>
+      <td>{{ expence.note }}</td>
     </tr>
     {% empty %}
     <th>No expences has been made yet.</th>
     <td></td>
-    <td></td>
-    <td></td>
+    <td></td>    
     {% endfor %}
   </tbody>
 </table>

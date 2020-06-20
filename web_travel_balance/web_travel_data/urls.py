@@ -14,13 +14,10 @@ urlpatterns = [
     # Page for adding new contribution
     path('contributions/', views.contributions, name='contributions'),
     # Detail page for member's contributions
-    path('members/member_<int:member_id>_contribution/',
-         views.member_contribution, name='member_contribution'),
+    path('members/member_<int:member_id>/',
+         views.member, name='member'),
     # Page shows all spendings
     path('expences/', views.expences, name='expences'),
-    # Page to edit member info
-    path('edit_member/edit_member_<int:member_id>/',
-         views.edit_member, name='edit_member'),
     # Page to show exeptions
     path('exeptions/', views.exeptions, name='exeptions'),
     # Page for adding new exeptions
@@ -28,9 +25,13 @@ urlpatterns = [
     # Page to edit exeption
     path('edit_exeption/edit_exeption_<int:exeption_id>',
          views.edit_exeption, name='edit_exeption'),
+    # page to delete exeption
     path('delete_exeption/delete_exeption_<int:exeption_id>',
          views.delete_exeption, name='delete_exeption'),
     path('email_member_report/<int:member_id>',
          views.email_member_report, name='email_member_report'),
+    # page to delete member
+    path('delete_member/delete_member_<int:member_id>',
+         views.delete_member, name='delete_member')
 
 ]

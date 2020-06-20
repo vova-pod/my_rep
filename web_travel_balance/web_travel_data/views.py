@@ -20,10 +20,7 @@ def index(request):
     return_to_close(request.user)
 
     members = Member.objects.filter(owner=request.user).order_by('date_added')
-    i = 0
-    for member in members:
-        i += 1
-        member.i = i
+
     exeptions = Exeption.objects.filter(owner=request.user)
     context = {'members': members, 'exeptions': exeptions,
                'all_exeption_expences': aee}
@@ -43,7 +40,7 @@ def new_member(request):
             new_member = form.save(commit=False)
             new_member.owner = request.user
             form.save()
-            return redirect('web_travel_data:members')
+            return redirect('web_travel_data:index')
 
     # Display a blank or invalid form.
     context = {'form': form}
@@ -69,10 +66,7 @@ def contributions(request):
     # Display a blank or invalid form.
     contributions = Contribution.objects.filter(
         owner=request.user).order_by('-date_added')
-    i = 0
-    for contribution in contributions:
-        i += 1
-        contribution.i = i
+
     context = {'form': form, 'contributions': contributions}
     return render(request, 'web_travel_data/contributions.html', context)
 
@@ -95,31 +89,15 @@ def expences(request):
 
     # Display a blank or invalid form.
     expences = Expence.objects.filter(
-        owner=request.user).order_by('date_added')
-    i = 0
-    for expence in expences:
-        i += 1
-        expence.i = i
+        owner=request.user).order_by('-date_added')
+
     context = {'form': form, 'expences': expences}
     return render(request, 'web_travel_data/expences.html', context)
 
 
 @login_required
-def member_contribution(request, member_id):
-    """Show a single member all his contributions"""
-
-    member = Member.objects.get(id=member_id)
-    # Make sure the member belongs to the current user.
-    if member.owner != request.user:
-        raise Http404
-    contributions = member.contribution_set.order_by('date_added')
-    context = {'member': member, 'contributions': contributions}
-    return render(request, 'web_travel_data/member_contribution.html', context)
-
-
-@login_required
-def edit_member(request, member_id):
-    """Edit an existing member"""
+def member(request, member_id):
+    """Edit an existing member and show all member contributions"""
 
     member = Member.objects.get(id=member_id)
     if member.owner != request.user:
@@ -133,10 +111,17 @@ def edit_member(request, member_id):
         form = MemberForm(instance=member, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('web_travel_data:member_contribution', member_id)
+            messages.success(request, "Member info has been updated.")
+            return redirect('web_travel_data:member', member_id)
 
-    context = {'member': member, 'form': form}
-    return render(request, 'web_travel_data/edit_member.html', context)
+    member = Member.objects.get(id=member_id)
+    # Make sure the member belongs to the current user.
+    if member.owner != request.user:
+        raise Http404
+    contributions = member.contribution_set.order_by('date_added')
+
+    context = {'member': member, 'contributions': contributions, 'form': form}
+    return render(request, 'web_travel_data/member.html', context)
 
 
 @login_required
@@ -144,10 +129,7 @@ def exeptions(request):
     """Show all exeptions"""
     aee = all_exeption_expences(request.user)
     exeptions = Exeption.objects.filter(owner=request.user)
-    i = 0
-    for exeption in exeptions:
-        i += 1
-        exeption.i = i
+
     context = {'exeptions': exeptions, 'all_exeption_expences': aee}
     return render(request, 'web_travel_data/exeptions.html', context)
 
@@ -226,7 +208,23 @@ def email_member_report(request, member_id):
             fail_silently=False,
         )
         messages.success(request, "Email has been sent.")
-        return redirect('web_travel_data:member_contribution', member.id)
+        return redirect('web_travel_data:member', member.id)
 
     context = {'member': member}
     return render(request, 'web_travel_data/email_member_report.html', context)
+
+
+@login_required
+def delete_member(request, member_id):
+    """ Delete member info"""
+    member = Member.objects.get(id=member_id)
+    if member.owner != request.user:
+        raise Http404
+
+    if request.method == 'POST':
+        member.delete()
+        messages.success(request, "Member has been successfully deleted.")
+        return redirect('web_travel_data:index')
+
+    context = {'member': member}
+    return render(request, 'web_travel_data/delete_member.html', context)

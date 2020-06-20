@@ -4,7 +4,7 @@ from .balance_data import *
 def balance_context(request):
     # Function to make global context
     if request.user.is_authenticated:
-        if balance(request.user) > 0:
+        if balance(request.user) >= 0:
             balance_color = 'green'
         else:
             balance_color = 'red'

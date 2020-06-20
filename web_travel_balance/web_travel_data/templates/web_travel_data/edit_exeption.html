@@ -1,4 +1,5 @@
 {% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
@@ -6,8 +7,16 @@
 
 	<form action="{% url 'web_travel_data:edit_exeption' exeption.id %}" method='post'>
 		{% csrf_token %}
-		{{ form.as_p }}
-		<button name="submit">Save changes</button>
+		{% for field in form %}
+		<div class="form-group">
+    <label><b>{{ field.label }}&nbsp;&nbsp;</b></label>
+    {{ field }}
+    
+  </div>
+    {% endfor %}
+		{% buttons %}
+		<button name="submit" class="btn btn-dark">Save changes</button>
+		{% endbuttons %}
 	</form>
 
 <a href="{% url 'web_travel_data:delete_exeption' exeption.id %}">Delete an exeption</a>
