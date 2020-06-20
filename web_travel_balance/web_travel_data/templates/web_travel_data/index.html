@@ -20,15 +20,15 @@
   <tbody>
   	{% for member in members %}
   	<tr class="clickable-row" data-href="{% url 'web_travel_data:member' member.id %}">      
-      <td>{{ member.name }}</td>
+      <th>{{ member.name }}</th>
       <td>{{ member.contribute }}</td>
       <td>{{ member.balance }}</td>
       <td>{{ member.return_to_close }}</td>
     </tr>
     {% endfor %}
     <tr class="clickable-row" data-href="{% url 'web_travel_data:new_member' %}">
-      <th>+</th>
-      <td><b>Add Member</b></td>
+      <th>+ Add Member</th>
+      <td></td>
       <td></td>
       <td></td>      
     </tr>

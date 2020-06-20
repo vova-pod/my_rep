@@ -1,14 +1,18 @@
 {% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
-	<p>Send report to {{ member }} on email: {{ member.email }}.</p>
+	<p>Send report to <b>{{ member }}</b> on email: <b>{{ member.email }}</b>.</p>
 
 	<form action="{% url 'web_travel_data:email_member_report' member.id %}" method='post'>
 		{% csrf_token %}
-		To send press button.
-		<button name="submit">YES</button>
-		<a href="{% url 'web_travel_data:exeptions' %}">CANCEL</a>
+		{% buttons %}
+		
+		<button name="submit" class="btn btn-dark">Send report</button>
+		<p></p>
+		<p><a href="{% url 'web_travel_data:exeptions' %}"><b>CANCEL</b></a></p>
+		{% endbuttons %}
 	</form>
 
 {% endblock content %}

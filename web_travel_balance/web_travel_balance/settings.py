@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     # Third party apps
     'bootstrap4',
 
+
     # Default Django apps
     'django.contrib.admin',
     'django.contrib.auth',

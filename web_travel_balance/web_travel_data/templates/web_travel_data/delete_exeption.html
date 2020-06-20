@@ -1,14 +1,16 @@
 {% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
 
-	<p>Delete exeption "{{ exeption }}"?</p>
+	<p style="color:red"><b>Delete exeption {{ exeption }} and all relative information?</b></p>
 
 	<form action="{% url 'web_travel_data:delete_exeption' exeption.id %}" method='post'>
 		{% csrf_token %}
-		Are yoy sure you want to delete this exeption?
-		<button name="submit">YES</button>
-		<a href="{% url 'web_travel_data:exeptions' %}">CANCEL</a>
+		{% buttons %}
+		<button name="submit" class="btn btn-danger">YES</button>
+		{% endbuttons %}
+		<p><b><a href="{% url 'web_travel_data:exeptions' %}">CANCEL</a></b></p>
 	</form>
 
 {% endblock content %}

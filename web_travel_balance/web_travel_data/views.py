@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 from .models import Member, Contribution, Expence, Exeption
 from .forms import MemberForm, ContributionForm, ExpenceForm, ExeptionForm
 from .balance_data import *
@@ -20,10 +22,7 @@ def index(request):
     return_to_close(request.user)
 
     members = Member.objects.filter(owner=request.user).order_by('date_added')
-
-    exeptions = Exeption.objects.filter(owner=request.user)
-    context = {'members': members, 'exeptions': exeptions,
-               'all_exeption_expences': aee}
+    context = {'members': members}
     return render(request, 'web_travel_data/index.html', context)
 
 
@@ -196,21 +195,22 @@ def delete_exeption(request, exeption_id):
 def email_member_report(request, member_id):
     """Send email with member contribution data"""
     member = Member.objects.get(id=member_id)
+    contributions = member.contribution_set.order_by('date_added')
+    context = {'member': member, 'contributions': contributions, 'all_contributions': all_contributions(
+        request.user), 'all_expences': all_expences(request.user), 'balance': balance(request.user)}
     if member.owner != request.user:
         raise Http404
 
     if request.method == 'POST':
-        send_mail(
-            'web travel data report',
-            create_member_report(member_id),
-            'cutterw7@gmail.com',
-            [member.email],
-            fail_silently=False,
-        )
+        html_content = render_to_string(
+            'web_travel_data/member_email.html', context)
+        msg = EmailMultiAlternatives('TeaMWallet member info', create_member_report(
+            member_id), 'cutterw7@gmail.com', [member.email])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
         messages.success(request, "Email has been sent.")
         return redirect('web_travel_data:member', member.id)
 
-    context = {'member': member}
     return render(request, 'web_travel_data/email_member_report.html', context)
 
 

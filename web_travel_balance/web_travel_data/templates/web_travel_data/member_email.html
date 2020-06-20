@@ -1,0 +1,62 @@
+{% load bootstrap4 %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>CREWWallet</title>
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+
+<div class="container">
+
+<p>Hello, {{ member.name }}.</p>
+<p>Our TeaMWallet balance is <b>{{ balance }}</b>.</p>
+<p>Total contributions are <b>{{ all_contributions }}</b>.</p>
+<p>Total spendings are <b>{{ all_expences }}</b>.</p>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>       
+      <th scope="col">You have contributed</th>
+      <th scope="col">Your current balance</th>
+      <th scope="col">Your closing Balance</th>
+    </tr>
+  </thead>
+  <tbody>    
+    <tr>       
+      <td>{{ member.contribute }}</td>
+      <td>{{ member.balance }}</td>
+      <td>{{ member.return_to_close }}</td>
+    </tr>    
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>      
+      <th scope="col">Date</th>
+      <th scope="col">Contribution</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for contribution in contributions %}
+  	<tr>
+      <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ contribution.amount }}</td>
+    </tr>
+    {% empty %}
+    <th>No contributions has been made yet.</th>
+    <td></td>    
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+{% endblock %}
+

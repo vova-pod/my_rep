@@ -25,7 +25,7 @@
   <tbody>
   	{% for exeption in exeptions %}
   	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' exeption.id %}">      
-      <td>{{ exeption.name }}</td>
+      <th>{{ exeption.name }}</th>
       <td>{{ exeption.expences }}</td>
       <td>{% for member in exeption.member.all %}<div>{{ member }}</div>{% endfor %}</td>
       <td>{{ exeption.note }}</td>
@@ -38,8 +38,8 @@
     <td></td>
     {% endfor %}
     <tr class="clickable-row" data-href="{% url 'web_travel_data:new_exeption' %}">
-      <th>+</th>
-      <th>Add Exeption</th>
+      <th>+ Add Exeption</th>
+      <th></th>
       <td></td>
       <td></td>       
     </tr>
