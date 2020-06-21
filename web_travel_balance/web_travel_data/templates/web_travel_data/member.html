@@ -1,6 +1,10 @@
 {% extends 'web_travel_data/base.html' %}
 {% load bootstrap4 %}
 
+{% block page_header %}
+<h>{{ member.name }}</h>
+{% endblock page_header %}
+
 {% block content %}
 
 {% if messages %}
@@ -11,20 +15,12 @@
 	</ul>
 {% endif %}
 
-<form action="{% url 'web_travel_data:member' member.id %}" method="post" class="form-inline justify-content-between mb-3">
-		{% csrf_token %}
-		
-		{% for field in form %}
-		<div class="form-group">
-    <label>{{ field.label }}&nbsp;&nbsp;</label>
-    {{ field }}
-    
-  </div>
-    {% endfor %}
-		{% buttons %}
-		<button name="submit" class="btn btn-dark">Save changes</button>
-		{% endbuttons %}
-	</form>
+<div>
+<a href="{% url 'web_travel_data:email_member_report' member.id %}" style="color:black"><b>Send report</b></a>
+</div>
+<div>
+<a href="{% url 'web_travel_data:edit_member' member.id %}" style="color:black"><b>Edit member</b></a>
+</div>
 
 
 <table class="table table-hover">
@@ -47,12 +43,6 @@
   </tbody>
 </table>
 
-<div>
-<a href="{% url 'web_travel_data:email_member_report' member.id %}">Send report to this member</a>
-</div>
-<div>
-<a href="{% url 'web_travel_data:delete_member' member.id %}">Delete member</a>
-</div>
 
 {% endblock content %}
 

@@ -13,7 +13,6 @@ class ContributionForm(forms.ModelForm):
     class Meta:
         model = Contribution
         fields = ['amount', 'member', 'note']
-        labels = {'amount': 'Amount', 'member': 'Member', 'note': 'Note'}
         widgets = {'member': forms.Select}
 
     def __init__(self, user, *args, **kwargs):
@@ -36,10 +35,10 @@ class ExeptionForm(forms.ModelForm):
     class Meta:
         model = Exeption
         fields = ['name', 'note', 'member', 'expence']
-        labels = {'name': 'Exeption',
-                  'member': 'Members', 'expence': 'Expences'}
+        labels = {'name': 'Exception'}
         widgets = {'member': forms.CheckboxSelectMultiple,
-                   'expence': forms.CheckboxSelectMultiple}
+                   'expence': forms.CheckboxSelectMultiple,
+                   'name': forms.TextInput(attrs={'placeholder': 'Exception'})}
 
     def __init__(self, user, *args, **kwargs):
         super(ExeptionForm, self).__init__(*args, **kwargs)

@@ -32,6 +32,9 @@ urlpatterns = [
          views.email_member_report, name='email_member_report'),
     # page to delete member
     path('delete_member/delete_member_<int:member_id>',
-         views.delete_member, name='delete_member')
+         views.delete_member, name='delete_member'),
+    # Page to edit member
+    path('edit_member/edit_member_<int:member_id>',
+         views.edit_member, name='edit_member'),
 
 ]

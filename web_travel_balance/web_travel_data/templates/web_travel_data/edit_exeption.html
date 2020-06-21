@@ -3,22 +3,16 @@
 
 {% block content %}
 
-	<p>Edit exeption info:</p>
+	<p>Edit exception info:</p>
 
 	<form action="{% url 'web_travel_data:edit_exeption' exeption.id %}" method='post'>
 		{% csrf_token %}
-		{% for field in form %}
-		<div class="form-group">
-    <label><b>{{ field.label }}&nbsp;&nbsp;</b></label>
-    {{ field }}
-    
-  </div>
-    {% endfor %}
+		{% bootstrap_form form %}
 		{% buttons %}
 		<button name="submit" class="btn btn-dark">Save changes</button>
 		{% endbuttons %}
 	</form>
 
-<a href="{% url 'web_travel_data:delete_exeption' exeption.id %}">Delete an exeption</a>
+<a href="{% url 'web_travel_data:delete_exeption' exeption.id %}">Delete an exception</a>
 
 {% endblock content %}

@@ -1,6 +1,19 @@
 {% extends "web_travel_data/base.html" %}
+{% load bootstrap4 %}
 
-{% block content %}
+{% block page_header %}
+
+<div class="jumbotron">
+	<h1 class="display-3">Team Wallet.</h1>
+
+	<p class="lead">Create Team Wallet. Keep track of your shared budget and its balance with tripmates, friends, and family.</p>
+
+	<a class="btn btn-dark" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+
+	<p></p>
+	<p class="lead">Or Log in:</p>
+
+
 
 	{% if form.errors %}
 		<p>Your username and password did not match. Please try again.</p>
@@ -8,12 +21,11 @@
 
 	<form method="post" action="{% url 'users:login' %}">
 		{% csrf_token %}
-		{{ form.as_p }}
-
-		<button name="submitt">Log in</button>
+		{% bootstrap_form form %}
+		{% buttons %}
+		<button name="submitt" class="btn btn-dark">Log in</button>
 		<input type="hidden" name="next" value="{% url 'web_travel_data:index' %}" />
+		{% endbuttons %}
 	</form>
 
-
-
-{% endblock content %}
+{% endblock page_header %}	

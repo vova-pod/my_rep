@@ -3,7 +3,7 @@
 
 {% block content %}
 
-	<p style="color:red"><b>Delete exeption {{ exeption }} and all relative information?</b></p>
+	<p style="color:red"><b>Delete exception {{ exeption }} and all relative information?</b></p>
 
 	<form action="{% url 'web_travel_data:delete_exeption' exeption.id %}" method='post'>
 		{% csrf_token %}

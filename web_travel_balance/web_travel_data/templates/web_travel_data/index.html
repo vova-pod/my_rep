@@ -6,12 +6,12 @@
 
 {% block content %}
 
-<p>Press row to view member's details or '+' to add member</p>
+<p>Press row to view member's details or <a href="{% url 'web_travel_data:new_member' %}" style="color:black"><b> '+ Add Member'</b></a></p>
 
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Crew Member</th>
+      <th scope="col">Team Member</th>
       <th scope="col">Contribution</th>
       <th scope="col">Balance</th>
       <th scope="col">Closing Balance</th>

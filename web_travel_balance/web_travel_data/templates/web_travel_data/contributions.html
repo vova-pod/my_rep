@@ -3,16 +3,10 @@
 
 {% block content %}
 
-	<form action="{% url 'web_travel_data:contributions' %}" method="post" class="form-inline justify-content-between mb-3">
+	<form action="{% url 'web_travel_data:contributions' %}" method="post">
 		{% csrf_token %}
 		
-		{% for field in form %}
-		<div class="form-group">
-    <label>{{ field.label }}&nbsp;&nbsp;</label>
-    {{ field }}
-    
-  </div>
-    {% endfor %}
+		{% bootstrap_form form %}
 		{% buttons %}
 		<button name="submit" class="btn btn-dark">Add contribution</button>
 		{% endbuttons %}
@@ -47,3 +41,4 @@
 
 
 {% endblock content %}
+

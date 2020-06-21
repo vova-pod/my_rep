@@ -96,7 +96,20 @@ def expences(request):
 
 @login_required
 def member(request, member_id):
-    """Edit an existing member and show all member contributions"""
+    """ Show all member contributions"""
+    member = Member.objects.get(id=member_id)
+    # Make sure the member belongs to the current user.
+    if member.owner != request.user:
+        raise Http404
+    contributions = member.contribution_set.order_by('date_added')
+
+    context = {'member': member, 'contributions': contributions}
+    return render(request, 'web_travel_data/member.html', context)
+
+
+@login_required
+def edit_member(request, member_id):
+    """Edit an existing member """
 
     member = Member.objects.get(id=member_id)
     if member.owner != request.user:
@@ -113,14 +126,8 @@ def member(request, member_id):
             messages.success(request, "Member info has been updated.")
             return redirect('web_travel_data:member', member_id)
 
-    member = Member.objects.get(id=member_id)
-    # Make sure the member belongs to the current user.
-    if member.owner != request.user:
-        raise Http404
-    contributions = member.contribution_set.order_by('date_added')
-
-    context = {'member': member, 'contributions': contributions, 'form': form}
-    return render(request, 'web_travel_data/member.html', context)
+    context = {'member': member, 'form': form}
+    return render(request, 'web_travel_data/edit_member.html', context)
 
 
 @login_required
