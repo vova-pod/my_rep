@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load i18n %}
 
 <!doctype html>
 <html lang="en">
@@ -14,17 +15,17 @@
 
 <div class="container">
 
-<p>Hello, {{ member.name }}.</p>
-<p>Our TeaMWallet balance is <b>{{ balance }}</b>.</p>
-<p>Total contributions are <b>{{ all_contributions }}</b>.</p>
-<p>Total spendings are <b>{{ all_expences }}</b>.</p>
+<p>{% trans 'Hello' %}, {{ member.name }}.</p>
+<p>{% blocktrans %}Our TeaMWallet balance is{% endblocktrans %} <b>{{ balance }}</b>.</p>
+<p>{% blocktrans %}Total contributions are{% endblocktrans %} <b>{{ all_contributions }}</b>.</p>
+<p>{% blocktrans %}Total spendings are{% endblocktrans %} <b>{{ all_expences }}</b>.</p>
 
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>       
-      <th scope="col">You have contributed</th>
-      <th scope="col">Your current balance</th>
-      <th scope="col">Your closing Balance</th>
+      <th scope="col">{% blocktrans %}You have contributed{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Your current balance{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Your closing Balance{% endblocktrans %}</th>
     </tr>
   </thead>
   <tbody>    
@@ -39,14 +40,14 @@
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Date</th>
-      <th scope="col">Contribution</th>
+      <th scope="col">{% trans 'Date' %}</th>
+      <th scope="col">{% trans 'Contribution' %}</th>
     </tr>
   </thead>
   <tbody>
   	{% for contribution in contributions %}
   	<tr>
-      <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ contribution.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
     </tr>
     {% empty %}

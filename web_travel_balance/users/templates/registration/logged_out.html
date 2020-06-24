@@ -1,16 +1,18 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
+
 
 {% block page_header %}
 
-<p><b>You have been logged out. Thank you for visiting.</b></p>
+<p><b>{% blocktrans %}You have been logged out. Thank you for visiting.{% endblocktrans %}</b></p>
 
 <div class="jumbotron">
-	<h1 class="display-3">Team Wallet.</h1>
+	<h1 class="display-3">{% blocktrans %}Team Wallet.{% endblocktrans %}</h1>
 
-	<p class="lead">Create Team Wallet. Keep track of your shared budget and its balance with tripmates, friends, and family.</p>
+	<p class="lead">{% blocktrans %}Create Team Wallet. Keep track of your shared budget and its balance with tripmates, friends, and family.{% endblocktrans %}</p>
 
-	<a class="btn btn-dark" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
-	<a class="btn btn-dark" href="{% url 'users:login' %}" role="button">Log in &raquo;</a>
+	<a class="btn btn-dark" href="{% url 'users:register' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
+	<a class="btn btn-dark" href="{% url 'users:login' %}" role="button">{% blocktrans %}Log in{% endblocktrans %} &raquo;</a>
 
 {% endblock page_header %}	

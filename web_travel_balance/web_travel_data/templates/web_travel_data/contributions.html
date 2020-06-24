@@ -1,5 +1,6 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 
@@ -8,7 +9,7 @@
 		
 		{% bootstrap_form form %}
 		{% buttons %}
-		<button name="submit" class="btn btn-dark">Add contribution</button>
+		<button name="submit" class="btn btn-dark">{% blocktrans %}Add contribution{% endblocktrans %}</button>
 		{% endbuttons %}
 	</form>
 	
@@ -16,22 +17,22 @@
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Date</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Member</th>
-      <th scope="col">Note</th>
+      <th scope="col">{% trans 'Date' %}</th>
+      <th scope="col">{% trans 'Amount' %}</th>
+      <th scope="col">{% trans 'Member' %}</th>
+      <th scope="col">{% trans 'Note' %}</th>
     </tr>
   </thead>
   <tbody>
   	{% for contribution in contributions %}
   	<tr>      
-      <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ contribution.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
       <td>{{ contribution.member }}</td>
       <td>{{ contribution.note }}</td>
     </tr>
     {% empty %}
-    <th>No contributions has been made yet.</th>
+    <th>{% blocktrans %}No contributions has been made yet.{% endblocktrans %}</th>
     <td></td>
     <td></td>
     <td></td>    
@@ -41,4 +42,5 @@
 
 
 {% endblock content %}
+
 

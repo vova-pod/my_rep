@@ -1,4 +1,5 @@
 {% extends "web_travel_data/base.html" %}
+{% load i18n %}
 
 {% block page_header %}
 
@@ -6,15 +7,15 @@
 
 {% block content %}
 
-<p>Press row to view member's details or <a href="{% url 'web_travel_data:new_member' %}" style="color:black"><b> '+ Add Member'</b></a></p>
+<p>{% blocktrans %}Press row to view member's details or{% endblocktrans %} <a href="{% url 'web_travel_data:new_member' %}" style="color:black"><b> {% blocktrans %}'+ Add Member'{% endblocktrans %}</b></a></p>
 
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Team Member</th>
-      <th scope="col">Contribution</th>
-      <th scope="col">Balance</th>
-      <th scope="col">Closing Balance</th>
+      <th scope="col">{% blocktrans %}Team Member{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Contribution{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Balance{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Closing Balance{% endblocktrans %}</th>
     </tr>
   </thead>
   <tbody>
@@ -27,7 +28,7 @@
     </tr>
     {% endfor %}
     <tr class="clickable-row" data-href="{% url 'web_travel_data:new_member' %}">
-      <th>+ Add Member</th>
+      <th>{% blocktrans %}+ Add Member{% endblocktrans %}</th>
       <td></td>
       <td></td>
       <td></td>      

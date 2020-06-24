@@ -1,4 +1,5 @@
 {% extends 'web_travel_data/base.html' %}
+{% load i18n %}
 
 
 {% block content %}
@@ -11,15 +12,15 @@
 </ul>
 {% endif %}
 
-<p>Press row to edit an exception or <a href="{% url 'web_travel_data:new_exeption' %}" style="color:black"><b>'+' to add exception</b></a></p>
+<p>{% blocktrans %}Press row to edit an exception or {% endblocktrans %}<a href="{% url 'web_travel_data:new_exeption' %}" style="color:black"><b>{% blocktrans %}'+' to add exception{% endblocktrans %}</b></a></p>
 
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Exception</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Members</th>
-      <th scope="col">Note</th>
+      <th scope="col">{% blocktrans %}Exception{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Amount{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Members{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Note{% endblocktrans %}</th>
     </tr>
   </thead>
   <tbody>
@@ -32,13 +33,13 @@
     </tr>
     {% empty %}
     <th></th>
-    <th>No exceptions has been set yet.</th>
+    <th>{% blocktrans %}No exceptions has been set yet.{% endblocktrans %}</th>
     <td></td>
     <td></td>
     <td></td>
     {% endfor %}
     <tr class="clickable-row" data-href="{% url 'web_travel_data:new_exeption' %}">
-      <th>+ Add Exception</th>
+      <th>{% blocktrans %}+ Add Exception{% endblocktrans %}</th>
       <th></th>
       <td></td>
       <td></td>       

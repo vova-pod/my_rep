@@ -1,0 +1,338 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-24 10:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: users/templates/registration/logged_out.html:8
+msgid "You have been logged out. Thank you for visiting."
+msgstr "Вы вышли из приложения. Спасибо за визит."
+
+#: users/templates/registration/logged_out.html:11
+#: users/templates/registration/login.html:9
+msgid "Team Wallet."
+msgstr "Team Wallet."
+
+#: users/templates/registration/logged_out.html:13
+#: users/templates/registration/login.html:11
+msgid ""
+"Create Team Wallet. Keep track of your shared budget and its balance with "
+"tripmates, friends, and family."
+msgstr ""
+"Создай свою команду вместе с TeanWallet. Веди общий бюджет и учет расходов с "
+"друзьями и семьей, дома и в путешествиях."
+
+#: users/templates/registration/logged_out.html:15
+#: users/templates/registration/login.html:13
+#: users/templates/registration/register.html:11
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: users/templates/registration/logged_out.html:16
+#: users/templates/registration/login.html:28
+msgid "Log in"
+msgstr "Войти"
+
+#: users/templates/registration/login.html:16
+msgid "Or Log in:"
+msgstr "Или войти:"
+
+#: users/templates/registration/login.html:21
+msgid "Your username and password did not match. Please try again."
+msgstr "Ваше имя и пароль не верны. Попробуйте еще раз."
+
+#: web_travel_data/models.py:8
+msgid "Name"
+msgstr "Имя"
+
+#: web_travel_data/models.py:16
+msgid "E-mail"
+msgstr "E-mail"
+
+#: web_travel_data/models.py:27 web_travel_data/models.py:58
+#: web_travel_data/templates/web_travel_data/contributions.html:22
+msgid "Member"
+msgstr "Участник"
+
+#: web_travel_data/models.py:29 web_travel_data/models.py:43
+#: web_travel_data/templates/web_travel_data/contributions.html:21
+#: web_travel_data/templates/web_travel_data/exeptions.html:21
+#: web_travel_data/templates/web_travel_data/expences.html:20
+msgid "Amount"
+msgstr "Сумма"
+
+#: web_travel_data/models.py:31 web_travel_data/models.py:46
+#: web_travel_data/templates/web_travel_data/contributions.html:20
+#: web_travel_data/templates/web_travel_data/expences.html:19
+#: web_travel_data/templates/web_travel_data/member.html:30
+#: web_travel_data/templates/web_travel_data/member_email.html:43
+msgid "Date"
+msgstr "Дата"
+
+#: web_travel_data/models.py:33 web_travel_data/models.py:48
+#: web_travel_data/models.py:62
+#: web_travel_data/templates/web_travel_data/contributions.html:23
+#: web_travel_data/templates/web_travel_data/exeptions.html:23
+#: web_travel_data/templates/web_travel_data/expences.html:22
+msgid "Note"
+msgstr "Примечание"
+
+#: web_travel_data/models.py:44
+#: web_travel_data/templates/web_travel_data/expences.html:21
+msgid "Purpose"
+msgstr "Назначение"
+
+#: web_travel_data/models.py:57
+msgid "Exeption"
+msgstr "Исключение"
+
+#: web_travel_data/models.py:59
+msgid "Expence"
+msgstr "Расход"
+
+#: web_travel_data/templates/web_travel_data/base.html:32
+msgid "Language"
+msgstr "Язык"
+
+#: web_travel_data/templates/web_travel_data/base.html:58
+msgid "LOG OUT"
+msgstr "ВЫХОД"
+
+#: web_travel_data/templates/web_travel_data/base.html:62
+msgid "LOG IN"
+msgstr "ВХОД"
+
+#: web_travel_data/templates/web_travel_data/base.html:65
+msgid "REGISTER"
+msgstr "РЕГИСТРАЦИЯ"
+
+#: web_travel_data/templates/web_travel_data/base.html:85
+msgid "CONTRIBUTION"
+msgstr "ВЗНОСЫ"
+
+#: web_travel_data/templates/web_travel_data/base.html:88
+msgid "SPENDING"
+msgstr "РАСХОДЫ"
+
+#: web_travel_data/templates/web_travel_data/base.html:91
+msgid "EXEPTION"
+msgstr "ИСКЛЮЧЕНИЯ"
+
+#: web_travel_data/templates/web_travel_data/contributions.html:12
+msgid "Add contribution"
+msgstr "Добавить взнос"
+
+#: web_travel_data/templates/web_travel_data/contributions.html:35
+#: web_travel_data/templates/web_travel_data/member.html:41
+msgid "No contributions has been made yet."
+msgstr "Взносы еще не были сделаны."
+
+#: web_travel_data/templates/web_travel_data/delete_exeption.html:7
+msgid "Delete exception "
+msgstr "Удалить исключение"
+
+#: web_travel_data/templates/web_travel_data/delete_exeption.html:7
+msgid " and all relative information?"
+msgstr " и всю информацию с ним связанную?"
+
+#: web_travel_data/templates/web_travel_data/delete_exeption.html:12
+#: web_travel_data/templates/web_travel_data/delete_member.html:12
+msgid "YES"
+msgstr "Да"
+
+#: web_travel_data/templates/web_travel_data/delete_exeption.html:14
+#: web_travel_data/templates/web_travel_data/delete_member.html:14
+#: web_travel_data/templates/web_travel_data/email_member_report.html:15
+msgid "CANCEL"
+msgstr "Отмена"
+
+#: web_travel_data/templates/web_travel_data/delete_member.html:7
+#, python-format
+msgid "Delete member %(member)s and all relative information?"
+msgstr "Удалить участника %(member)s и всю связанную с ним информацию?"
+
+#: web_travel_data/templates/web_travel_data/edit_exeption.html:7
+msgid "Edit exception info:"
+msgstr "Редактировать исключение:"
+
+#: web_travel_data/templates/web_travel_data/edit_exeption.html:13
+#: web_travel_data/templates/web_travel_data/edit_member.html:11
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: web_travel_data/templates/web_travel_data/edit_exeption.html:17
+msgid "Delete an exception"
+msgstr "Удалить исключение"
+
+#: web_travel_data/templates/web_travel_data/edit_member.html:17
+msgid "Delete member"
+msgstr "Удалить участника"
+
+#: web_travel_data/templates/web_travel_data/email_member_report.html:7
+msgid "Send report to "
+msgstr "Отправить отчёт участнику "
+
+#: web_travel_data/templates/web_travel_data/email_member_report.html:7
+msgid " on email: "
+msgstr " на e-mail: "
+
+#: web_travel_data/templates/web_travel_data/email_member_report.html:13
+#: web_travel_data/templates/web_travel_data/member.html:20
+msgid "Send report"
+msgstr "Отправить отчёт"
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:15
+msgid "Press row to edit an exception or "
+msgstr "Нажмите ряд чтобы редактировать исключения или "
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:15
+msgid "'+' to add exception"
+msgstr "'+' чтобы добавить исключение"
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:20
+msgid "Exception"
+msgstr "Исключение"
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:22
+#: web_travel_data/templates/web_travel_data/members.html:6
+msgid "Members"
+msgstr "Участник"
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:36
+msgid "No exceptions has been set yet."
+msgstr "Расходы еще не были сделаны."
+
+#: web_travel_data/templates/web_travel_data/exeptions.html:42
+msgid "+ Add Exception"
+msgstr "+ Добавить исключение"
+
+#: web_travel_data/templates/web_travel_data/expences.html:11
+#: web_travel_data/templates/web_travel_data/new_expence.html:11
+msgid "Add spending"
+msgstr "Добавить расход"
+
+#: web_travel_data/templates/web_travel_data/expences.html:34
+msgid "No expences has been made yet."
+msgstr "Взносы еще не были сделаны."
+
+#: web_travel_data/templates/web_travel_data/index.html:10
+msgid "Press row to view member's details or"
+msgstr "Нажмите ряд чтобы увидеть информацию по участнику или"
+
+#: web_travel_data/templates/web_travel_data/index.html:10
+msgid "'+ Add Member'"
+msgstr "+ Добавить участника"
+
+#: web_travel_data/templates/web_travel_data/index.html:15
+msgid "Team Member"
+msgstr "Участник"
+
+#: web_travel_data/templates/web_travel_data/index.html:16
+#: web_travel_data/templates/web_travel_data/member.html:31
+#: web_travel_data/templates/web_travel_data/member_email.html:44
+msgid "Contribution"
+msgstr "Взносы"
+
+#: web_travel_data/templates/web_travel_data/index.html:17
+msgid "Balance"
+msgstr "Баланс"
+
+#: web_travel_data/templates/web_travel_data/index.html:18
+msgid "Closing Balance"
+msgstr "Баланс расчёта"
+
+#: web_travel_data/templates/web_travel_data/index.html:31
+msgid "+ Add Member"
+msgstr "+ Добавить участника"
+
+#: web_travel_data/templates/web_travel_data/member.html:23
+msgid "Edit member"
+msgstr "Редактировать участника"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:18
+msgid "Hello"
+msgstr "Привет"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:19
+msgid "Our TeaMWallet balance is"
+msgstr "Баланс TeamWallet равен"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:20
+msgid "Total contributions are"
+msgstr "Всего сделано взносов"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:21
+msgid "Total spendings are"
+msgstr "Всего израсходовано"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:26
+msgid "You have contributed"
+msgstr "Вы внесли"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:27
+msgid "Your current balance"
+msgstr "Ваш текущий баланс"
+
+#: web_travel_data/templates/web_travel_data/member_email.html:28
+msgid "Your closing Balance"
+msgstr "Ваш баланс при расчете"
+
+#: web_travel_data/templates/web_travel_data/members.html:14
+msgid "No members have been added yet."
+msgstr "Участники еще не были добавлены."
+
+#: web_travel_data/templates/web_travel_data/members.html:18
+msgid "Add a new member"
+msgstr "Добавить нового участника"
+
+#: web_travel_data/templates/web_travel_data/new_exeption.html:7
+msgid "Add a new exeption:"
+msgstr "Добавить новое исключение"
+
+#: web_travel_data/templates/web_travel_data/new_exeption.html:13
+msgid "Add exception"
+msgstr "Добавить исключение"
+
+#: web_travel_data/templates/web_travel_data/new_expence.html:6
+msgid "Add a new spending:"
+msgstr "Добавить новый расход"
+
+#: web_travel_data/templates/web_travel_data/new_member.html:7
+msgid "Add a new member:"
+msgstr "Добавить нового участника"
+
+#: web_travel_data/templates/web_travel_data/new_member.html:19
+msgid "Add member"
+msgstr "Добавить участника"
+
+#: web_travel_data/views.py:195
+msgid "Exeption has been successfully deleted."
+msgstr "Исключение было успешно удалено."
+
+#: web_travel_data/views.py:216
+msgid "TeaMWallet member info"
+msgstr "TeamWallet информация для участника"
+
+#: web_travel_data/views.py:221
+msgid "Email has been sent."
+msgstr "E-mail был отправлен."
+
+#: web_travel_data/views.py:237
+msgid "Member has been successfully deleted."
+msgstr "Участник был успешно удалён."

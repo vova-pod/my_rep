@@ -1,9 +1,10 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 
-	<b>Add a new member:</b>
+	<b>{% blocktrans %}Add a new member:{% endblocktrans %}</b>
 
 	<form action="{% url 'web_travel_data:new_member' %}" method="post" class="form">
 	{% csrf_token %}		
@@ -15,7 +16,7 @@
     </div>
     {% endfor %}
 	{% buttons %}
-	<button name="submit" class="btn btn-dark">Add member</button>
+	<button name="submit" class="btn btn-dark">{% blocktrans %}Add member{% endblocktrans %}</button>
 	{% endbuttons %}
 	</form>
 

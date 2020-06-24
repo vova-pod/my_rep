@@ -1,8 +1,9 @@
 {% extends "web_travel_data/base.html" %}
+{% load i18n %}
 
 {% block content %}
 
-	<p>Members</p>
+	<p>{% blocktrans %}Members{% endblocktrans %}</p>
 
 	<ul>
 		{% for member in members %}
@@ -10,10 +11,10 @@
 				<a href="{% url 'web_travel_data:edit_member' member.id %}">{{ member }}</a>
 			</li>
 		{% empty %}
-			<li>No members have been added yet.</li>
+			<li>{% blocktrans %}No members have been added yet.{% endblocktrans %}</li>
 		{% endfor %}
 	</ul>
 
-	<a href="{% url 'web_travel_data:new_member' %}">Add a new member</a>
+	<a href="{% url 'web_travel_data:new_member' %}">{% blocktrans %}Add a new member{% endblocktrans %}</a>
 
 {% endblock content %}

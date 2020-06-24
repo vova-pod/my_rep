@@ -1,13 +1,14 @@
 {% extends "web_travel_data/base.html" %}
+{% load i18n %}
 
 {% block content %}
 
-	<p>Add a new spending:</p>
+	<p>{% blocktrans %}Add a new spending:{% endblocktrans %}</p>
 
 	<form action="{% url 'web_travel_data:new_expence' %}" method='post'>
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button name="submit">Add spending</button>
+		<button name="submit">{% blocktrans %}Add spending{% endblocktrans %}</button>
 	</form>
 
 {% endblock content %}

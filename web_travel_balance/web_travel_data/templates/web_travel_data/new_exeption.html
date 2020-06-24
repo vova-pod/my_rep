@@ -1,15 +1,16 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 
-	<p>Add a new exeption:</p>
+	<p>{% blocktrans %}Add a new exeption:{% endblocktrans %}</p>
 
 	<form action="{% url 'web_travel_data:new_exeption' %}" method="post">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}
-		<button name="submit" class="btn btn-dark">Add exception</button>
+		<button name="submit" class="btn btn-dark">{% blocktrans %}Add exception{% endblocktrans %}</button>
 		{% endbuttons %}
 	</form>
 

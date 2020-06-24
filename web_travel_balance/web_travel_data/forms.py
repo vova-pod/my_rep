@@ -2,6 +2,8 @@ from django import forms
 
 from .models import Member, Contribution, Expence, Exeption
 
+from django.utils.translation import ugettext_lazy
+
 
 class MemberForm(forms.ModelForm):
     class Meta:
@@ -35,7 +37,6 @@ class ExeptionForm(forms.ModelForm):
     class Meta:
         model = Exeption
         fields = ['name', 'note', 'member', 'expence']
-        labels = {'name': 'Exception'}
         widgets = {'member': forms.CheckboxSelectMultiple,
                    'expence': forms.CheckboxSelectMultiple,
                    'name': forms.TextInput(attrs={'placeholder': 'Exception'})}

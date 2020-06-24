@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 from .models import Member, Contribution, Expence, Exeption
 from .forms import MemberForm, ContributionForm, ExpenceForm, ExeptionForm
 from .balance_data import *
@@ -191,7 +192,8 @@ def delete_exeption(request, exeption_id):
 
     if request.method == 'POST':
         exeption.delete()
-        messages.success(request, "Exeption has been successfully deleted.")
+        message = _("Exeption has been successfully deleted.")
+        messages.success(request, message)
         return redirect('web_travel_data:exeptions')
 
     context = {'exeption': exeption}
@@ -211,11 +213,13 @@ def email_member_report(request, member_id):
     if request.method == 'POST':
         html_content = render_to_string(
             'web_travel_data/member_email.html', context)
-        msg = EmailMultiAlternatives('TeaMWallet member info', create_member_report(
+        subject = _('TeaMWallet member info')
+        msg = EmailMultiAlternatives(subject, create_member_report(
             member_id), 'cutterw7@gmail.com', [member.email])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-        messages.success(request, "Email has been sent.")
+        message = _("Email has been sent.")
+        messages.success(request, message)
         return redirect('web_travel_data:member', member.id)
 
     return render(request, 'web_travel_data/email_member_report.html', context)
@@ -230,7 +234,8 @@ def delete_member(request, member_id):
 
     if request.method == 'POST':
         member.delete()
-        messages.success(request, "Member has been successfully deleted.")
+        message = _("Member has been successfully deleted.")
+        messages.success(request, message)
         return redirect('web_travel_data:index')
 
     context = {'member': member}

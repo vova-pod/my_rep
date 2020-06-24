@@ -1,5 +1,6 @@
 {% extends 'web_travel_data/base.html' %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block page_header %}
 <h>{{ member.name }}</h>
@@ -16,28 +17,28 @@
 {% endif %}
 
 <div>
-<a href="{% url 'web_travel_data:email_member_report' member.id %}" style="color:black"><b>Send report</b></a>
+<a href="{% url 'web_travel_data:email_member_report' member.id %}" style="color:black"><b>{% blocktrans %}Send report{% endblocktrans %}</b></a>
 </div>
 <div>
-<a href="{% url 'web_travel_data:edit_member' member.id %}" style="color:black"><b>Edit member</b></a>
+<a href="{% url 'web_travel_data:edit_member' member.id %}" style="color:black"><b>{% blocktrans %}Edit member{% endblocktrans %}</b></a>
 </div>
 
 
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Date</th>
-      <th scope="col">Contribution</th>
+      <th scope="col">{% trans 'Date' %}</th>
+      <th scope="col">{% trans 'Contribution' %}</th>
     </tr>
   </thead>
   <tbody>
   	{% for contribution in contributions %}
   	<tr>
-      <td>{{ contribution.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ contribution.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
     </tr>
     {% empty %}
-    <th>No contributions has been made yet.</th>
+    <th>{% blocktrans %}No contributions has been made yet.{% endblocktrans %}</th>
     <td></td>    
     {% endfor %}
   </tbody>

@@ -1,5 +1,6 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
+{% load i18n %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}
-		<button name="submit" class="btn btn-dark">Add spending</button>
+		<button name="submit" class="btn btn-dark">{% blocktrans %}Add spending{% endblocktrans %}</button>
 		{% endbuttons %}
 	</form>
 	
@@ -15,22 +16,22 @@
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">Date</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Purpose</th>
-      <th scope="col">Note</th>
+      <th scope="col">{% trans 'Date' %}</th>
+      <th scope="col">{% trans 'Amount' %}</th>
+      <th scope="col">{% trans 'Purpose' %}</th>
+      <th scope="col">{% trans 'Note' %}</th>
     </tr>
   </thead>
   <tbody>
   	{% for expence in expences %}
   	<tr>      
-      <td>{{ expence.date_added|date:'d M Y H:i' }}</td>
+      <td>{{ expence.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ expence.amount }}</td>
       <td>{{ expence.purpose }}</td>
       <td>{{ expence.note }}</td>
     </tr>
     {% empty %}
-    <th>No expences has been made yet.</th>
+    <th>{% blocktrans %}No expences has been made yet.{% endblocktrans %}</th>
     <td></td>
     <td></td>    
     {% endfor %}
