@@ -8,13 +8,13 @@
 	<ul>
 		{% for member in members %}
 			<li>
-				<a href="{% url 'web_travel_data:edit_member' member.id %}">{{ member }}</a>
+				<a href="{% url 'web_travel_data:edit_member' team.id member.id %}">{{ member }}</a>
 			</li>
 		{% empty %}
 			<li>{% blocktrans %}No members have been added yet.{% endblocktrans %}</li>
 		{% endfor %}
 	</ul>
 
-	<a href="{% url 'web_travel_data:new_member' %}">{% blocktrans %}Add a new member{% endblocktrans %}</a>
+	<a href="{% url 'web_travel_data:new_member' team.id %}">{% blocktrans %}Add a new member{% endblocktrans %}</a>
 
 {% endblock content %}

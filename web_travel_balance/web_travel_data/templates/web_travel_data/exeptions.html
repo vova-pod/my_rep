@@ -12,7 +12,7 @@
 </ul>
 {% endif %}
 
-<p>{% blocktrans %}Press row to edit an exception or {% endblocktrans %}<a href="{% url 'web_travel_data:new_exeption' %}" style="color:black"><b>{% blocktrans %}'+' to add exception{% endblocktrans %}</b></a></p>
+<p>{% blocktrans %}Press row to edit an exception or {% endblocktrans %}<a href="{% url 'web_travel_data:new_exeption' team.id %}" style="color:black"><b>{% blocktrans %}'+' to add exception{% endblocktrans %}</b></a></p>
 
 <table class="table table-hover">
   <thead class="thead-dark">
@@ -25,7 +25,7 @@
   </thead>
   <tbody>
   	{% for exeption in exeptions %}
-  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' exeption.id %}">      
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_exeption' team.id exeption.id %}">      
       <th>{{ exeption.name }}</th>
       <td>{{ exeption.expences }}</td>
       <td>{% for member in exeption.member.all %}<div>{{ member }}</div>{% endfor %}</td>
@@ -38,7 +38,7 @@
     <td></td>
     <td></td>
     {% endfor %}
-    <tr class="clickable-row" data-href="{% url 'web_travel_data:new_exeption' %}">
+    <tr class="clickable-row" data-href="{% url 'web_travel_data:new_exeption' team.id %}">
       <th>{% blocktrans %}+ Add Exception{% endblocktrans %}</th>
       <th></th>
       <td></td>

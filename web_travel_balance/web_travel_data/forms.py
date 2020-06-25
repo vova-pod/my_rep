@@ -1,8 +1,12 @@
 from django import forms
 
-from .models import Member, Contribution, Expence, Exeption
+from .models import Member, Contribution, Expence, Exeption, Team
 
-from django.utils.translation import ugettext_lazy
+
+class TeamForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ['name']
 
 
 class MemberForm(forms.ModelForm):
@@ -17,9 +21,9 @@ class ContributionForm(forms.ModelForm):
         fields = ['amount', 'member', 'note']
         widgets = {'member': forms.Select}
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, team, *args, **kwargs):
         super(ContributionForm, self).__init__(*args, **kwargs)
-        self.fields['member'].queryset = Member.objects.filter(owner=user)
+        self.fields['member'].queryset = Member.objects.filter(owner=team)
         self.fields['note'].required = False
 
 
@@ -41,8 +45,8 @@ class ExeptionForm(forms.ModelForm):
                    'expence': forms.CheckboxSelectMultiple,
                    'name': forms.TextInput(attrs={'placeholder': 'Exception'})}
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, team, *args, **kwargs):
         super(ExeptionForm, self).__init__(*args, **kwargs)
-        self.fields['member'].queryset = Member.objects.filter(owner=user)
-        self.fields['expence'].queryset = Expence.objects.filter(owner=user)
+        self.fields['member'].queryset = Member.objects.filter(owner=team)
+        self.fields['expence'].queryset = Expence.objects.filter(owner=team)
         self.fields['note'].required = False

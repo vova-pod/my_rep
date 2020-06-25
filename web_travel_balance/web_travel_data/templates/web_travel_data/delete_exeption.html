@@ -6,12 +6,12 @@
 
 	<p style="color:red"><b>{% blocktrans %}Delete exception {% endblocktrans %}{{ exeption }}{% blocktrans %} and all relative information?{% endblocktrans %}</b></p>
 
-	<form action="{% url 'web_travel_data:delete_exeption' exeption.id %}" method='post'>
+	<form action="{% url 'web_travel_data:delete_exeption' team.id exeption.id %}" method='post'>
 		{% csrf_token %}
 		{% buttons %}
 		<button name="submit" class="btn btn-danger">{% trans 'YES' %}</button>
 		{% endbuttons %}
-		<p><b><a href="{% url 'web_travel_data:exeptions' %}">{% trans 'CANCEL' %}</a></b></p>
+		<p><b><a href="{% url 'web_travel_data:exeptions' team.id %}">{% trans 'CANCEL' %}</a></b></p>
 	</form>
 
 {% endblock content %}

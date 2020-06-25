@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<form action="{% url 'web_travel_data:contributions' %}" method="post">
+	<form action="{% url 'web_travel_data:contributions' team.id %}" method="post">
 		{% csrf_token %}
 		
 		{% bootstrap_form form %}
@@ -25,7 +25,7 @@
   </thead>
   <tbody>
   	{% for contribution in contributions %}
-  	<tr>      
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_contribution' team.id contribution.id %}">      
       <td>{{ contribution.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
       <td>{{ contribution.member }}</td>
@@ -42,5 +42,6 @@
 
 
 {% endblock content %}
+
 
 

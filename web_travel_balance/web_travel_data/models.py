@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=200, verbose_name=_('Team Name'))
+    date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 class Member(models.Model):
     """A member of team"""
     name = models.CharField(max_length=200, verbose_name=_('Name'))
@@ -14,7 +20,7 @@ class Member(models.Model):
     return_to_close = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
     email = models.EmailField(default='', verbose_name=_('E-mail'))
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
         """Return a string representation of the model"""
@@ -29,7 +35,7 @@ class Contribution(models.Model):
         max_digits=10, decimal_places=2, default=0, verbose_name=_('Amount'))
     date_added = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Date'))
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Team, on_delete=models.CASCADE)
     note = models.CharField(max_length=255, default='', verbose_name=_('Note'))
 
     def __str__(self):
@@ -44,7 +50,7 @@ class Expence(models.Model):
     purpose = models.CharField(max_length=200, verbose_name=_('Purpose'))
     date_added = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Date'))
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Team, on_delete=models.CASCADE)
     note = models.CharField(max_length=255, default='', verbose_name=_('Note'))
 
     def __str__(self):
@@ -58,7 +64,7 @@ class Exeption(models.Model):
     member = models.ManyToManyField(Member, verbose_name=_('Member'))
     expence = models.ManyToManyField(Expence, verbose_name=_('Expence'))
     expences = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Team, on_delete=models.CASCADE)
     note = models.CharField(max_length=255, default='', verbose_name=_('Note'))
 
     def __str__(self):

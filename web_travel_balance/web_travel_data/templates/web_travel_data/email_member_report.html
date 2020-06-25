@@ -6,13 +6,13 @@
 
 	<p>{% blocktrans %}Send report to {% endblocktrans %}<b>{{ member }}</b>{% blocktrans %} on email: {% endblocktrans %}<b>{{ member.email }}</b>.</p>
 
-	<form action="{% url 'web_travel_data:email_member_report' member.id %}" method='post'>
+	<form action="{% url 'web_travel_data:email_member_report' team.id member.id %}" method='post'>
 		{% csrf_token %}
 		{% buttons %}
 		
 		<button name="submit" class="btn btn-dark">{% blocktrans %}Send report{% endblocktrans %}</button>
 		<p></p>
-		<p><a href="{% url 'web_travel_data:exeptions' %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
+		<p><a href="{% url 'web_travel_data:exeptions' team.id %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
 		{% endbuttons %}
 	</form>
 

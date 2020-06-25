@@ -10,31 +10,41 @@ urlpatterns = [
     # Home page
     path('', views.index, name='index'),
     # Page for adding new member
-    path('new_member/', views.new_member, name='new_member'),
+    path('new_member/team_<int:team_id>/', views.new_member, name='new_member'),
     # Page for adding new contribution
-    path('contributions/', views.contributions, name='contributions'),
+    path('contributions/team_<int:team_id>/',
+         views.contributions, name='contributions'),
     # Detail page for member's contributions
-    path('members/member_<int:member_id>/',
+    path('members/team_<int:team_id>/member_<int:member_id>/',
          views.member, name='member'),
     # Page shows all spendings
-    path('expences/', views.expences, name='expences'),
+    path('expences/team_<int:team_id>/', views.expences, name='expences'),
     # Page to show exeptions
-    path('exeptions/', views.exeptions, name='exeptions'),
+    path('exeptions/team_<int:team_id>/', views.exeptions, name='exeptions'),
     # Page for adding new exeptions
-    path('new_exeption/', views.new_exeption, name='new_exeption'),
+    path('new_exeption/team_<int:team_id>/',
+         views.new_exeption, name='new_exeption'),
     # Page to edit exeption
-    path('edit_exeption/edit_exeption_<int:exeption_id>',
+    path('edit_exeption/team_<int:team_id>/edit_exeption_<int:exeption_id>',
          views.edit_exeption, name='edit_exeption'),
     # page to delete exeption
-    path('delete_exeption/delete_exeption_<int:exeption_id>',
+    path('delete_exeption/team_<int:team_id>/delete_exeption_<int:exeption_id>',
          views.delete_exeption, name='delete_exeption'),
-    path('email_member_report/<int:member_id>',
+    path('email_member_report/team_<int:team_id>/<int:member_id>',
          views.email_member_report, name='email_member_report'),
     # page to delete member
-    path('delete_member/delete_member_<int:member_id>',
+    path('delete_member/team_<int:team_id>/delete_member_<int:member_id>',
          views.delete_member, name='delete_member'),
     # Page to edit member
-    path('edit_member/edit_member_<int:member_id>',
+    path('edit_member/team_<int:team_id>/edit_member_<int:member_id>',
          views.edit_member, name='edit_member'),
+    # Page to manage user and teams
+    path('balance/team_<int:team_id>/', views.balance, name='balance'),
+    # Page to edit contribution
+    path('edit_contribution/team_<int:team_id>/contribution_<int:contribution_id>/',
+         views.edit_contribution, name='edit_contribution'),
+    # Page to edit spending
+    path('edit_expence/team_<int:team_id>/expence_<int:expence_id>/',
+         views.edit_expence, name='edit_expence'),
 
 ]

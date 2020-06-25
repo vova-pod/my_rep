@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<form action="{% url 'web_travel_data:expences' %}" method="post">
+	<form action="{% url 'web_travel_data:expences' team.id %}" method="post">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}
@@ -24,7 +24,7 @@
   </thead>
   <tbody>
   	{% for expence in expences %}
-  	<tr>      
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_expence' team.id expence.id %}">     
       <td>{{ expence.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ expence.amount }}</td>
       <td>{{ expence.purpose }}</td>
@@ -40,3 +40,4 @@
 
 
 {% endblock content %}
+

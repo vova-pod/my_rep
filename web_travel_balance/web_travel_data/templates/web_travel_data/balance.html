@@ -1,0 +1,42 @@
+{% extends "web_travel_data/base.html" %}
+{% load i18n %}
+
+{% block page_header %}
+
+{% endblock page_header %}
+
+{% block content %}
+
+<p>{% blocktrans %}Press row to view member's details or{% endblocktrans %} <a href="{% url 'web_travel_data:new_member' team.id %}" style="color:black"><b> {% blocktrans %}'+ Add Member'{% endblocktrans %}</b></a></p>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>      
+      <th scope="col">{% blocktrans %}Team Member{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Contribution{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Balance{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Closing Balance{% endblocktrans %}</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for member in members %}
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:member' team.id member.id %}">      
+      <th>{{ member.name }}</th>
+      <td>{{ member.contribute }}</td>
+      <td>{{ member.balance }}</td>
+      <td>{{ member.return_to_close }}</td>
+    </tr>
+    {% endfor %}
+    <tr class="clickable-row" data-href="{% url 'web_travel_data:new_member' team.id %}">
+      <th>{% blocktrans %}+ Add Member{% endblocktrans %}</th>
+      <td></td>
+      <td></td>
+      <td></td>      
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock content %}
+
+

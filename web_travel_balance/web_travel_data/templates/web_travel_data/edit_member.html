@@ -4,7 +4,9 @@
 
 {% block content %}
 
-<form action="{% url 'web_travel_data:member' member.id %}" method="post">
+<p>{% blocktrans %}Edit member info:{% endblocktrans %}</p>
+
+<form action="{% url 'web_travel_data:edit_member' team.id member.id %}" method="post">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}
@@ -14,7 +16,7 @@
 
 
 	<div>
-<a href="{% url 'web_travel_data:delete_member' member.id %}">{% blocktrans %}Delete member{% endblocktrans %}</a>
+<a href="{% url 'web_travel_data:delete_member' team.id member.id %}">{% blocktrans %}Delete member{% endblocktrans %}</a>
 </div>
 
 

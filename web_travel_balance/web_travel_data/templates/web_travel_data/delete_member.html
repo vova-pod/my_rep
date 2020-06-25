@@ -6,12 +6,12 @@
 
 	<p style="color:red"><b>{% blocktrans %}Delete member {{ member }} and all relative information?{% endblocktrans %}</b></p>
 
-	<form action="{% url 'web_travel_data:delete_member' member.id %}" method='post'>
+	<form action="{% url 'web_travel_data:delete_member' team.id member.id %}" method='post'>
 		{% csrf_token %}
 		{% buttons %}
 		<button name="submit" class="btn btn-danger">{% blocktrans %}YES{% endblocktrans %}</button>
 		{% endbuttons %}
-		<p><b><a href="{% url 'web_travel_data:member' member.id %}">{% blocktrans %}CANCEL{% endblocktrans %}</a></b></p>
+		<p><b><a href="{% url 'web_travel_data:member' team.id member.id %}">{% blocktrans %}CANCEL{% endblocktrans %}</a></b></p>
 	</form>
 
 {% endblock content %}

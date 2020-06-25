@@ -6,15 +6,9 @@
 
 	<b>{% blocktrans %}Add a new member:{% endblocktrans %}</b>
 
-	<form action="{% url 'web_travel_data:new_member' %}" method="post" class="form">
+	<form action="{% url 'web_travel_data:new_member' team.id %}" method="post" class="form">
 	{% csrf_token %}		
-	{% for field in form %}
-	<div class="form-group">
-    <label>{{ field.label }}&nbsp;&nbsp;</label>
-    {{ field }}
-    
-    </div>
-    {% endfor %}
+	{% bootstrap_form form %}
 	{% buttons %}
 	<button name="submit" class="btn btn-dark">{% blocktrans %}Add member{% endblocktrans %}</button>
 	{% endbuttons %}

@@ -5,7 +5,7 @@
 
 	<p>{% blocktrans %}Add a new spending:{% endblocktrans %}</p>
 
-	<form action="{% url 'web_travel_data:new_expence' %}" method='post'>
+	<form action="{% url 'web_travel_data:new_expence' team.id %}" method='post'>
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button name="submit">{% blocktrans %}Add spending{% endblocktrans %}</button>

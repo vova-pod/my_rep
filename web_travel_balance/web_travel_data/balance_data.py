@@ -5,36 +5,36 @@ from datetime import datetime
 import decimal
 
 
-def balance(request_user):
+def all_balance(team):
     """Calculate total balance"""
     contributions = 0
     expences = 0
-    for contribution in Contribution.objects.filter(owner=request_user):
+    for contribution in Contribution.objects.filter(owner=team.id):
         contributions += contribution.amount
-    for expence in Expence.objects.filter(owner=request_user):
+    for expence in Expence.objects.filter(owner=team.id):
         expences += expence.amount
     return contributions - expences
 
 
-def all_contributions(request_user):
+def all_contributions(team):
     """Calculate all contributions"""
     contributions = 0
-    for contribution in Contribution.objects.filter(owner=request_user):
+    for contribution in Contribution.objects.filter(owner=team.id):
         contributions += contribution.amount
     return contributions
 
 
-def all_expences(request_user):
+def all_expences(team):
     """Calculate all expences"""
     expences = 0
-    for expence in Expence.objects.filter(owner=request_user):
+    for expence in Expence.objects.filter(owner=team.id):
         expences += expence.amount
     return expences
 
 
-def contributions_per_member(request_user):
+def contributions_per_member(team):
     """Calculate contributions per member"""
-    for member in Member.objects.filter(owner=request_user):
+    for member in Member.objects.filter(owner=team.id):
         contributions = 0
         for contribution in Contribution.objects.filter(member=member.id):
             contributions += contribution.amount
@@ -42,9 +42,9 @@ def contributions_per_member(request_user):
         member.save()
 
 
-def expences_per_exeption(request_user):
+def expences_per_exeption(team):
     """Calculate expences per exeption"""
-    for exeption in Exeption.objects.filter(owner=request_user):
+    for exeption in Exeption.objects.filter(owner=team.id):
         expences = 0
         for expence in Expence.objects.filter(exeption=exeption.id):
             expences += expence.amount
@@ -52,47 +52,47 @@ def expences_per_exeption(request_user):
         exeption.save()
 
 
-def all_exeption_expences(request_user):
+def all_exeption_expences(team):
     """Calculate all exeption expences"""
     exeption_expences = 0
-    for exeption_expence in Exeption.objects.filter(owner=request_user):
+    for exeption_expence in Exeption.objects.filter(owner=team.id):
         exeption_expences += exeption_expence.expences
     return exeption_expences
 
 
-def base_expences_per_member(request_user):
-    if len(Member.objects.filter(owner=request_user)) != 0:
-        if balance(request_user) <= 0:
-            return (all_expences(request_user) - all_exeption_expences(request_user)) / len(Member.objects.filter(owner=request_user))
+def base_expences_per_member(team):
+    if len(Member.objects.filter(owner=team.id)) != 0:
+        if all_balance(team) <= 0:
+            return (all_expences(team) - all_exeption_expences(team)) / len(Member.objects.filter(owner=team.id))
         else:
-            return (all_contributions(request_user) - all_exeption_expences(request_user)) / len(Member.objects.filter(owner=request_user))
+            return (all_contributions(team) - all_exeption_expences(team)) / len(Member.objects.filter(owner=team.id))
 
 
-def balance_per_member(request_user):
+def balance_per_member(team):
     """Calculate if member owes and how much"""
-    if len(Member.objects.filter(owner=request_user)) != 0:
-        for member in Member.objects.filter(owner=request_user):
-            member_owe = base_expences_per_member(request_user)
-            for exeption in Exeption.objects.filter(owner=request_user):
+    if len(Member.objects.filter(owner=team.id)) != 0:
+        for member in Member.objects.filter(owner=team.id):
+            member_owe = base_expences_per_member(team)
+            for exeption in Exeption.objects.filter(owner=team.id):
                 for expence in Expence.objects.filter(exeption=exeption.id):
                     if exeption not in member.exeption_set.all():
-                        member_owe += expence.amount / (len(Member.objects.filter(owner=request_user)) -
-                                                        len(Member.objects.filter(owner=request_user).filter(exeption=exeption.id)))
+                        member_owe += expence.amount / (len(Member.objects.filter(owner=team.id)) -
+                                                        len(Member.objects.filter(owner=team.id).filter(exeption=exeption.id)))
             member.balance = member.contribute - decimal.Decimal(member_owe)
             member.save()
 
 
-def return_to_close(request_user):
+def return_to_close(team):
     """How much shell we return to member to close balance or take"""
-    if len(Member.objects.filter(owner=request_user)) != 0:
-        if balance(request_user) >= 0:
-            for member in Member.objects.filter(owner=request_user):
+    if len(Member.objects.filter(owner=team.id)) != 0:
+        if all_balance(team) >= 0:
+            for member in Member.objects.filter(owner=team.id):
                 member.return_to_close = member.balance + \
-                    decimal.Decimal(balance(request_user) /
-                                    len(Member.objects.filter(owner=request_user)))
+                    decimal.Decimal(all_balance(team) /
+                                    len(Member.objects.filter(owner=team.id)))
                 member.save()
         else:
-            for member in Member.objects.filter(owner=request_user):
+            for member in Member.objects.filter(owner=team.id):
                 member.return_to_close = member.balance
                 member.save()
 

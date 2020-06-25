@@ -6,7 +6,7 @@
 
 	<b>{% blocktrans %}Add a new team:{% endblocktrans %}</b>
 
-	<form action="{% url 'web_travel_data:index' %}" method="post" class="form">
+	<form action="{% url 'web_travel_data:user' %}" method="post" class="form">
 	{% csrf_token %}		
 	{% bootstrap_form form %}
 	{% buttons %}
@@ -24,12 +24,12 @@
   </thead>
   <tbody>
   	{% for team in teams %}
-  	<tr class="clickable-row" data-href="{% url 'web_travel_data:balance' team.id %}">      
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:index' %}">      
       <th>{{ team.name }}</th>
       
     </tr>
     {% endfor %}
-    <tr class="clickable-row" data-href="{% url 'web_travel_data:index' %}">
+    <tr class="clickable-row" data-href="{% url 'web_travel_data:user' %}">
       <th>{% blocktrans %}+ Add Team{% endblocktrans %}</th>
            
     </tr>

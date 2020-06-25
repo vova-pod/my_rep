@@ -6,7 +6,7 @@
 
 	<p>{% blocktrans %}Add a new exeption:{% endblocktrans %}</p>
 
-	<form action="{% url 'web_travel_data:new_exeption' %}" method="post">
+	<form action="{% url 'web_travel_data:new_exeption' team.id %}" method="post">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}

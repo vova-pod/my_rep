@@ -17,10 +17,10 @@
 {% endif %}
 
 <div>
-<a href="{% url 'web_travel_data:email_member_report' member.id %}" style="color:black"><b>{% blocktrans %}Send report{% endblocktrans %}</b></a>
+<a href="{% url 'web_travel_data:email_member_report' team.id member.id %}" style="color:black"><b>{% blocktrans %}Send report{% endblocktrans %}</b></a>
 </div>
 <div>
-<a href="{% url 'web_travel_data:edit_member' member.id %}" style="color:black"><b>{% blocktrans %}Edit member{% endblocktrans %}</b></a>
+<a href="{% url 'web_travel_data:edit_member' team.id member.id %}" style="color:black"><b>{% blocktrans %}Edit member{% endblocktrans %}</b></a>
 </div>
 
 
@@ -33,7 +33,7 @@
   </thead>
   <tbody>
   	{% for contribution in contributions %}
-  	<tr>
+  	<tr class="clickable-row" data-href="{% url 'web_travel_data:edit_contribution' team.id contribution.id %}">
       <td>{{ contribution.date_added|date:'d.m.y H:i' }}</td>
       <td>{{ contribution.amount }}</td>
     </tr>
@@ -46,4 +46,5 @@
 
 
 {% endblock content %}
+
 
