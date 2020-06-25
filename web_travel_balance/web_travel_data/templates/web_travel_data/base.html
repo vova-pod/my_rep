@@ -43,7 +43,7 @@
 		<ul class="navbar-nav ml-auto">
 			{% if user.is_authenticated %}
 			<li class="nav-item">
-				<a class="nav-link" href="{% url 'web_travel_data:index' %}"><img src="{% static 'web_travel_data/noun_account_2844260_2.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">{{ user.username }}</a>
+				<a class="nav-link" href="{% url 'web_travel_data:index' %}">TEAMS</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'users:logout' %}">{% trans 'LOG OUT' %}</a>
@@ -67,7 +67,7 @@
 		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
 		  	{% for language in languages %}
-		    <a class="dropdown-item" href="/{{ language.code }}/">{{ language.name_local }}</a>
+		    <a class="dropdown-item" href="/{{ language.code }}{{ request.path|slice:'3:' }}">{{ language.name_local }}</a>
 		    {% endfor %}
 
 		  </div>

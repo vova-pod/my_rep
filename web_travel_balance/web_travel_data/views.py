@@ -398,3 +398,23 @@ def edit_expence(request, expence_id, team_id):
     context = {'expence': expence, 'form': form, 'team': team,
                'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/edit_expence.html', context)
+
+
+@login_required
+def delete_team(request, team_id):
+    """ Delete member info"""
+    team = Team.objects.get(id=team_id)
+    if team.owner != request.user:
+        raise Http404
+    team_contribution = all_contributions(team)
+    team_expences = all_expences(team)
+    team_balance = all_balance(team)
+    
+    if request.method == 'POST':
+        team.delete()
+        message = _("Team has been successfully deleted.")
+        messages.success(request, message)
+        return redirect('web_travel_data:index')
+
+    context = {'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    return render(request, 'web_travel_data/delete_team.html', context)

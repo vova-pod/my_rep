@@ -1,40 +1,46 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
 
-	<b>{% blocktrans %}Add a new team:{% endblocktrans %}</b>
+{% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+{% endif %}
 
-	<form action="{% url 'web_travel_data:index' %}" method="post" class="form">
-	{% csrf_token %}		
-	{% bootstrap_form form %}
-	{% buttons %}
-	<button name="submit" class="btn btn-dark">{% blocktrans %}Add team{% endblocktrans %}</button>
-	{% endbuttons %}
-	</form>
-
-
+<b>{% blocktrans %}Choose your team to manage its balance or create a new one.{% endblocktrans %}</b>
+	
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>      
       <th scope="col">{% blocktrans %}Teams{% endblocktrans %}</th>
-      
+      <th></th>
     </tr>
   </thead>
   <tbody>
   	{% for team in teams %}
-  	<tr class="clickable-row" data-href="{% url 'web_travel_data:balance' team.id %}">      
-      <th>{{ team.name }}</th>
-      
+  	<tr>      
+      <th><a href="{% url 'web_travel_data:balance' team.id %}" style="color:black">{{ team.name }}</a></th>
+      <th><a href="{% url 'web_travel_data:delete_team' team.id %}"><img src="{% static 'web_travel_data/noun_Delete_1378793.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""></a></th>
     </tr>
     {% endfor %}
-    <tr class="clickable-row" data-href="{% url 'web_travel_data:index' %}">
-      <th>{% blocktrans %}+ Add Team{% endblocktrans %}</th>
-           
-    </tr>
   </tbody>
 </table>
+
+<b>{% blocktrans %}Create new team:{% endblocktrans %}</b>
+
+  <form action="{% url 'web_travel_data:index' %}" method="post" class="form">
+  {% csrf_token %}    
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button name="submit" class="btn btn-dark">{% blocktrans %}Create team{% endblocktrans %}</button>
+  {% endbuttons %}
+  </form>
 
 
 

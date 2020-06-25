@@ -46,5 +46,8 @@ urlpatterns = [
     # Page to edit spending
     path('edit_expence/team_<int:team_id>/expence_<int:expence_id>/',
          views.edit_expence, name='edit_expence'),
+    # Page to delete team
+    path('delete_team/team_<int:team_id>',
+         views.delete_team, name='delete_team'),
 
 ]
