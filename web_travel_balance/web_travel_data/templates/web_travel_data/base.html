@@ -43,7 +43,7 @@
 		<ul class="navbar-nav ml-auto">
 			{% if user.is_authenticated %}
 			<li class="nav-item">
-				<a class="nav-link" href="{% url 'web_travel_data:index' %}">TEAMS</a>
+				<a class="nav-link" href="{% url 'web_travel_data:index' %}">{% trans 'TEAMS' %}</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'users:logout' %}">{% trans 'LOG OUT' %}</a>

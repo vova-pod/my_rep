@@ -4,6 +4,26 @@
 
 {% block content %}
 
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if member.email is None %}
+	<b>{% blocktrans %}Please enter member's email{% endblocktrans %}</b>
+	<form action="{% url 'web_travel_data:email_member_report' team.id member.id %}" method="post">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+		<button name="submit" class="btn btn-dark">{% blocktrans %}Save changes{% endblocktrans %}</button>
+		{% endbuttons %}
+	</form>
+	{% endif %}
+
+	{% if member.email is not None %}
 	<p>{% blocktrans %}Send report to {% endblocktrans %}<b>{{ member }}</b>{% blocktrans %} on email: {% endblocktrans %}<b>{{ member.email }}</b>.</p>
 
 	<form action="{% url 'web_travel_data:email_member_report' team.id member.id %}" method='post'>
@@ -12,8 +32,9 @@
 		
 		<button name="submit" class="btn btn-dark">{% blocktrans %}Send report{% endblocktrans %}</button>
 		<p></p>
-		<p><a href="{% url 'web_travel_data:exeptions' team.id %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
+		<p><a href="{% url 'web_travel_data:member' team.id member.id %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
 		{% endbuttons %}
 	</form>
+	{% endif %}
 
 {% endblock content %}

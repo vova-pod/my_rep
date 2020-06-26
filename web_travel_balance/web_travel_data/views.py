@@ -47,7 +47,8 @@ def balance(request, team_id):
     balance_per_member(team)
     return_to_close(team)
     members = Member.objects.filter(owner=team).order_by('date_added')
-    context = {'members': members, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'members': members, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/balance.html', context)
 
 
@@ -73,7 +74,8 @@ def new_member(request, team_id):
             return redirect('web_travel_data:balance', team_id)
 
     # Display a blank or invalid form.
-    context = {'form': form, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'form': form, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/new_member.html', context)
 
 
@@ -228,7 +230,8 @@ def new_exeption(request, team_id):
             return redirect('web_travel_data:exeptions', team_id)
 
     # Display a blank or invalid form.
-    context = {'form': form, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'form': form, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/new_exeption.html', context)
 
 
@@ -280,7 +283,8 @@ def delete_exeption(request, exeption_id, team_id):
         messages.success(request, message)
         return redirect('web_travel_data:exeptions', team_id)
 
-    context = {'exeption': exeption, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'exeption': exeption, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/delete_exeption.html', context)
 
 
@@ -294,28 +298,47 @@ def email_member_report(request, member_id, team_id):
     team_expences = all_expences(team)
     team_balance = all_balance(team)
     member = Member.objects.get(id=member_id)
-    contributions = member.contribution_set.order_by('date_added')
-    context = {'member': member, 'contributions': contributions, 
-                'team_balance': team_balance, 
-                'team_contribution': team_contribution, 
-                'team_expences': team_expences,
-               'team': team
-               }
     if member.owner != team:
         raise Http404
+    contributions = member.contribution_set.order_by('date_added')
+    context = {'member': member, 'contributions': contributions,
+                       'team_balance': team_balance,
+                       'team_contribution': team_contribution,
+                       'team_expences': team_expences,
+                       'team': team
+                       }        
 
-    if request.method == 'POST':
-        html_content = render_to_string(
-            'web_travel_data/member_email.html', context)
-        subject = _('TeaMWallet member info')
-        msg = EmailMultiAlternatives(subject, create_member_report(
-            member_id), 'cutterw7@gmail.com', [member.email])
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
-        message = _("Email has been sent.")
-        messages.success(request, message)
-        return redirect('web_travel_data:member', team_id, member.id)
+    if member.email is None:
+        if request.method != 'POST':
+            # Initial request; prefill form with current entry.
+            form = MemberForm(instance=member)
+        else:
+            # POST data submitted, process data
+            form = MemberForm(instance=member, data=request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Member info has been updated.")
+                return redirect('web_travel_data:email_member_report', team_id, member_id)
+        context = {'member': member, 'contributions': contributions,
+                   'team_balance': team_balance,
+                   'team_contribution': team_contribution,
+                   'team_expences': team_expences,
+                   'team': team, 'form': form
+                   }
 
+    else:
+        if request.method == 'POST':            
+            html_content = render_to_string(
+                'web_travel_data/member_email.html', context)
+            subject = _('TeamWallet info for ' + str(member.name) + ' from ' + str(team.name))
+            msg = EmailMultiAlternatives(subject, create_member_report(
+                member_id), 'cutterw7@gmail.com', [member.email])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
+            message = _("Email has been sent.")
+            messages.success(request, message)
+            return redirect('web_travel_data:member', team_id, member.id)
+    
     return render(request, 'web_travel_data/email_member_report.html', context)
 
 
@@ -338,7 +361,8 @@ def delete_member(request, member_id, team_id):
         messages.success(request, message)
         return redirect('web_travel_data:balance', team_id)
 
-    context = {'member': member, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'member': member, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/delete_member.html', context)
 
 
@@ -361,7 +385,7 @@ def edit_contribution(request, contribution_id, team_id):
     else:
         # POST data submitted, process data
         form = ContributionForm(instance=contribution,
-                            data=request.POST, team=team)
+                                data=request.POST, team=team)
         if form.is_valid():
             form.save()
             return redirect('web_travel_data:contributions', team_id)
@@ -390,7 +414,7 @@ def edit_expence(request, expence_id, team_id):
     else:
         # POST data submitted, process data
         form = ExpenceForm(instance=expence,
-                            data=request.POST)
+                           data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('web_travel_data:expences', team_id)
@@ -409,12 +433,13 @@ def delete_team(request, team_id):
     team_contribution = all_contributions(team)
     team_expences = all_expences(team)
     team_balance = all_balance(team)
-    
+
     if request.method == 'POST':
         team.delete()
         message = _("Team has been successfully deleted.")
         messages.success(request, message)
         return redirect('web_travel_data:index')
 
-    context = {'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    context = {'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/delete_team.html', context)

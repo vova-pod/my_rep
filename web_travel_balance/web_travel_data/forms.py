@@ -14,6 +14,10 @@ class MemberForm(forms.ModelForm):
         model = Member
         fields = ['name', 'email']
 
+    def __init__(self, *args, **kwargs):
+        super(MemberForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
+
 
 class ContributionForm(forms.ModelForm):
     class Meta:
