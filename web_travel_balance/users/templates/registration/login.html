@@ -2,15 +2,22 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-
 {% block page_header %}
+
+{% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+{% endif %}
 
 <div class="jumbotron">
 	<h1 class="display-3">{% blocktrans %}Team Wallet.{% endblocktrans %}</h1>
 
 	<p class="lead">{% blocktrans %}Create Team Wallet. Keep track of your shared budget and its balance with tripmates, friends, and family.{% endblocktrans %}</p>
 
-	<a class="btn btn-dark" href="{% url 'users:register' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
+	<a class="btn btn-dark" href="{% url 'users:signup' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
 
 	<p></p>
 	<p class="lead">{% blocktrans %}Or Log in:{% endblocktrans %}</p>

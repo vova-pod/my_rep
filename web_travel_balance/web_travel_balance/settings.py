@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     'bootstrap4',
+    'six',
 
 
     # Default Django apps
