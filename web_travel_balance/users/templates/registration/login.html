@@ -17,10 +17,7 @@
 
 	<p class="lead">{% blocktrans %}Create Team Wallet. Keep track of your shared budget and its balance with tripmates, friends, and family.{% endblocktrans %}</p>
 
-	<a class="btn btn-dark" href="{% url 'users:signup' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
-
-	<p></p>
-	<p class="lead">{% blocktrans %}Or Log in:{% endblocktrans %}</p>
+	<p>{% blocktrans %}Log in with your e-mail as username:{% endblocktrans %}</p>
 
 
 
@@ -36,5 +33,17 @@
 		<input type="hidden" name="next" value="{% url 'web_travel_data:index' %}" />
 		{% endbuttons %}
 	</form>
+
+	<p>{% blocktrans %}If you do not have an account please register.{% endblocktrans %}</p>
+
+
+	<a class="btn btn-dark" href="{% url 'users:signup' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
+	<p></p>
+
+	<p>{% blocktrans %}If you forget your password please request password reset.{% endblocktrans %}</p>
+
+
+	<a class="btn btn-dark" href="{% url 'users:password_reset' %}" role="button">{% blocktrans %}Reset{% endblocktrans %} &raquo;</a>
+
 
 {% endblock page_header %}	

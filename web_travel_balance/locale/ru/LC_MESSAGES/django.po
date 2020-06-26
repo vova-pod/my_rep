@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-25 18:14+0000\n"
+"POT-Creation-Date: 2020-06-26 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,17 +20,38 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: users/templates/registration/account_activation_email.html:3
+msgid "Hi"
+msgstr "Привет"
+
+#: users/templates/registration/account_activation_email.html:7
+msgid ""
+"If clicking the link above doesn't work, please copy and paste the URL in a "
+"new browser\n"
+"window instead."
+msgstr ""
+"Если нажатие на ссылку не сработает, пожалуйста, скопируйте ссылку и "
+"вставьте ее в браузер"
+
+#: users/templates/registration/account_activation_email.html:10
+msgid ""
+"Sincerely,\n"
+"The TeamWallet Team"
+msgstr ""
+"Искренне ваша,\n"
+"Команда TeamWallet"
+
 #: users/templates/registration/logged_out.html:8
 msgid "You have been logged out. Thank you for visiting."
 msgstr "Вы вышли из приложения. Спасибо за визит."
 
 #: users/templates/registration/logged_out.html:11
-#: users/templates/registration/login.html:9
+#: users/templates/registration/login.html:16
 msgid "Team Wallet."
 msgstr "Team Wallet."
 
 #: users/templates/registration/logged_out.html:13
-#: users/templates/registration/login.html:11
+#: users/templates/registration/login.html:18
 msgid ""
 "Create Team Wallet. Keep track of your shared budget and its balance with "
 "tripmates, friends, and family."
@@ -39,23 +60,113 @@ msgstr ""
 "друзьями и семьей, дома и в путешествиях."
 
 #: users/templates/registration/logged_out.html:15
-#: users/templates/registration/login.html:13
-#: users/templates/registration/register.html:11
+#: users/templates/registration/login.html:40
+#: users/templates/registration/signup.html:14
 msgid "Register"
 msgstr "Зарегистрироваться"
 
 #: users/templates/registration/logged_out.html:16
-#: users/templates/registration/login.html:28
+#: users/templates/registration/login.html:32
 msgid "Log in"
 msgstr "Войти"
 
-#: users/templates/registration/login.html:16
-msgid "Or Log in:"
-msgstr "Или войти:"
+#: users/templates/registration/login.html:20
+msgid "Log in with your e-mail as username:"
+msgstr "Войдите, используя ваш e-mail как имя пользователя."
 
-#: users/templates/registration/login.html:21
+#: users/templates/registration/login.html:25
 msgid "Your username and password did not match. Please try again."
 msgstr "Ваше имя и пароль не верны. Попробуйте еще раз."
+
+#: users/templates/registration/login.html:37
+msgid "If you do not have an account please register."
+msgstr "Если у Вас нет учетной записи, пожалуйста, зарегистрируйтесь"
+
+#: users/templates/registration/login.html:43
+msgid "If you forget your password please request password reset."
+msgstr "Если Вы забыли Ваш пароль, пожалуйста, запросите его замену."
+
+#: users/templates/registration/login.html:46
+msgid "Reset"
+msgstr "Запросить"
+
+#: users/templates/registration/password_reset_complete.html:8
+msgid "Your password has been set. You may go ahead."
+msgstr "Ваш пароль был установлен. Теперь вы можете войти в приложение."
+
+#: users/templates/registration/password_reset_complete.html:11
+#: web_travel_data/templates/web_travel_data/base.html:53
+msgid "LOG IN"
+msgstr "ВХОД"
+
+#: users/templates/registration/password_reset_confirm.html:8
+#: users/templates/registration/password_reset_confirm.html:13
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: users/templates/registration/password_reset_confirm.html:18
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.\n"
+"      Please request a new password reset."
+msgstr ""
+"Ссылка на смену пароля не действительна, возможно она уже была использована."
+"Пожалуйста запросите новую замену пароля."
+
+#: users/templates/registration/password_reset_done.html:8
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered.\n"
+"    You should receive them shortly."
+msgstr ""
+"Мы отправили Вам инструкции по смене пароля. Если учетная запись "
+"существует,\n"
+"Вы их вскоре получите."
+
+#: users/templates/registration/password_reset_done.html:12
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with,\n"
+"    and check your spam folder."
+msgstr ""
+"Если Вы не получили e-mail, пожалуйста, убедитесь, что вы ввели адрес с "
+"которым регистрировались и проверьте Вашу спам-папку."
+
+#: users/templates/registration/password_reset_email.html:3
+msgid "Hi,"
+msgstr "Привет,"
+
+#: users/templates/registration/password_reset_email.html:4
+msgid ""
+"To initiate the password reset process for your TeamWallet Account,\n"
+"click the link below:"
+msgstr ""
+"Для запуска процедуры изменения пароля для вашей учетной записи TeamWallet,\n"
+"прйдите по ссылке ниже:"
+
+#: users/templates/registration/password_reset_email.html:9
+msgid ""
+"If clicking the link above doesn't work, please copy and paste the URL in a "
+"new browser window instead."
+msgstr ""
+"Если нажатие на ссылку не сработает, пожалуйста, скопируйте ссылку и "
+"вставьте ее в браузер"
+
+#: users/templates/registration/password_reset_email.html:11
+msgid ""
+"Sincerely, \n"
+"The TeamWallet Team"
+msgstr ""
+"Искренне ваша,\n"
+"Команда TeamWallet"
+
+#: users/templates/registration/password_reset_form.html:6
+msgid "Enter your e-mail to reset password."
+msgstr "Введите Ваш e-mail чтобы изменить пароль."
+
+#: users/templates/registration/password_reset_form.html:11
+msgid "Submit"
+msgstr "Отправить"
 
 #: web_travel_data/models.py:7
 msgid "Team Name"
@@ -148,10 +259,6 @@ msgstr "КОМАНДЫ"
 msgid "LOG OUT"
 msgstr "ВЫХОД"
 
-#: web_travel_data/templates/web_travel_data/base.html:53
-msgid "LOG IN"
-msgstr "ВХОД"
-
 #: web_travel_data/templates/web_travel_data/base.html:56
 msgid "REGISTER"
 msgstr "РЕГИСТРАЦИЯ"
@@ -194,7 +301,7 @@ msgstr "Да"
 #: web_travel_data/templates/web_travel_data/delete_exeption.html:14
 #: web_travel_data/templates/web_travel_data/delete_member.html:14
 #: web_travel_data/templates/web_travel_data/delete_team.html:14
-#: web_travel_data/templates/web_travel_data/email_member_report.html:15
+#: web_travel_data/templates/web_travel_data/email_member_report.html:35
 msgid "CANCEL"
 msgstr "Отмена"
 
@@ -204,6 +311,7 @@ msgid "Delete member %(member)s and all relative information?"
 msgstr "Удалить участника %(member)s и всю связанную с ним информацию?"
 
 #: web_travel_data/templates/web_travel_data/delete_team.html:7
+#, python-format
 msgid "Delete team %(team.name)s and all relative information?"
 msgstr "Удалить команду %(team.name)s и всю связанную с ней информацию?"
 
@@ -215,6 +323,7 @@ msgstr "Редактировать информацию о взносе:"
 #: web_travel_data/templates/web_travel_data/edit_exeption.html:13
 #: web_travel_data/templates/web_travel_data/edit_expence.html:13
 #: web_travel_data/templates/web_travel_data/edit_member.html:13
+#: web_travel_data/templates/web_travel_data/email_member_report.html:21
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
@@ -238,15 +347,19 @@ msgstr "Редактировать информацию об участнике"
 msgid "Delete member"
 msgstr "Удалить участника"
 
-#: web_travel_data/templates/web_travel_data/email_member_report.html:7
+#: web_travel_data/templates/web_travel_data/email_member_report.html:16
+msgid "Please enter member's email"
+msgstr "Пожалуйста, введите e-mail участника"
+
+#: web_travel_data/templates/web_travel_data/email_member_report.html:27
 msgid "Send report to "
 msgstr "Отправить отчёт участнику "
 
-#: web_travel_data/templates/web_travel_data/email_member_report.html:7
+#: web_travel_data/templates/web_travel_data/email_member_report.html:27
 msgid " on email: "
 msgstr " на e-mail: "
 
-#: web_travel_data/templates/web_travel_data/email_member_report.html:13
+#: web_travel_data/templates/web_travel_data/email_member_report.html:33
 #: web_travel_data/templates/web_travel_data/member.html:20
 msgid "Send report"
 msgstr "Отправить отчёт"
@@ -361,23 +474,23 @@ msgstr "Добавить нового участника"
 msgid "Add member"
 msgstr "Добавить участника"
 
-#: web_travel_data/views.py:279
+#: web_travel_data/views.py:282
 msgid "Exeption has been successfully deleted."
 msgstr "Исключение было успешно удалено."
 
-#: web_travel_data/views.py:310
-msgid "TeaMWallet member info"
-msgstr "TeamWallet информация для участника"
+#: web_travel_data/views.py:333
+msgid "TeamWallet info for "
+msgstr "TeamWallet информация для "
 
-#: web_travel_data/views.py:315
+#: web_travel_data/views.py:338
 msgid "Email has been sent."
 msgstr "E-mail был отправлен."
 
-#: web_travel_data/views.py:337
+#: web_travel_data/views.py:360
 msgid "Member has been successfully deleted."
 msgstr "Участник был успешно удалён."
 
-#: web_travel_data/views.py:415
+#: web_travel_data/views.py:439
 msgid "Team has been successfully deleted."
 msgstr "Команда была успешно удалена."
 

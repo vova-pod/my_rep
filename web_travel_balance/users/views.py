@@ -30,6 +30,7 @@ class SignUpView(View):
         if form.is_valid():
 
             user = form.save(commit=False)
+            user.username = user.email
             user.is_active = False  # Deactivate account till it is confirmed
             user.save()
 
