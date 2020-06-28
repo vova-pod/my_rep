@@ -200,11 +200,10 @@ def exeptions(request, team_id):
     team_contribution = all_contributions(team)
     team_expences = all_expences(team)
     team_balance = all_balance(team)
-    aee = all_exeption_expences(team)
     exeptions = Exeption.objects.filter(owner=team)
-
-    context = {'exeptions': exeptions,
-               'all_exeption_expences': aee, 'team': team, 'team_balance': team_balance, 'team_contribution': team_contribution, 'team_expences': team_expences}
+    expences_per_exeption(team)
+    context = {'exeptions': exeptions, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/exeptions.html', context)
 
 
@@ -227,7 +226,14 @@ def new_exeption(request, team_id):
             new_exeption = form.save(commit=False)
             new_exeption.owner = team
             form.save()
-            return redirect('web_travel_data:exeptions', team_id)
+            if check_new_exeption(team, new_exeption):
+                new_exeption.delete()
+                messages.error(
+                    request, "Exeption you are trying to add already was established.")
+                return redirect('web_travel_data:new_exeption', team_id)
+            else:
+                form.save()
+                return redirect('web_travel_data:exeptions', team_id)
 
     # Display a blank or invalid form.
     context = {'form': form, 'team': team, 'team_balance': team_balance,
@@ -302,11 +308,11 @@ def email_member_report(request, member_id, team_id):
         raise Http404
     contributions = member.contribution_set.order_by('date_added')
     context = {'member': member, 'contributions': contributions,
-                       'team_balance': team_balance,
-                       'team_contribution': team_contribution,
-                       'team_expences': team_expences,
-                       'team': team
-                       }        
+               'team_balance': team_balance,
+               'team_contribution': team_contribution,
+               'team_expences': team_expences,
+               'team': team
+               }
 
     if member.email is None:
         if request.method != 'POST':
@@ -327,10 +333,11 @@ def email_member_report(request, member_id, team_id):
                    }
 
     else:
-        if request.method == 'POST':            
+        if request.method == 'POST':
             html_content = render_to_string(
                 'web_travel_data/member_email.html', context)
-            subject = _('TeamWallet info for ' + str(member.name) + ' from ' + str(team.name))
+            subject = _('TeamWallet info for ' +
+                        str(member.name) + ' from ' + str(team.name))
             msg = EmailMultiAlternatives(subject, create_member_report(
                 member_id), 'cutterw7@gmail.com', [member.email])
             msg.attach_alternative(html_content, "text/html")
@@ -338,7 +345,7 @@ def email_member_report(request, member_id, team_id):
             message = _("Email has been sent.")
             messages.success(request, message)
             return redirect('web_travel_data:member', team_id, member.id)
-    
+
     return render(request, 'web_travel_data/email_member_report.html', context)
 
 
