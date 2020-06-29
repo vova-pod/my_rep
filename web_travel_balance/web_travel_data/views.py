@@ -444,3 +444,51 @@ def delete_team(request, team_id):
     context = {'team': team, 'team_balance': team_balance,
                'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/delete_team.html', context)
+
+
+@login_required
+def delete_contribution(request, contribution_id, team_id):
+    """Delete a contribution"""
+    team = Team.objects.get(id=team_id)
+    if team.owner != request.user:
+        raise Http404
+    team_contribution = all_contributions(team)
+    team_expences = all_expences(team)
+    team_balance = all_balance(team)
+    contribution = Contribution.objects.get(id=contribution_id)
+    if contribution.owner != team:
+        raise Http404
+
+    if request.method == 'POST':
+        contribution.delete()
+        message = _("Contribution has been successfully deleted.")
+        messages.success(request, message)
+        return redirect('web_travel_data:contributions', team_id)
+
+    context = {'contribution': contribution, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
+    return render(request, 'web_travel_data/delete_contribution.html', context)
+
+
+@login_required
+def delete_expence(request, expence_id, team_id):
+    """Delete an expence"""
+    team = Team.objects.get(id=team_id)
+    if team.owner != request.user:
+        raise Http404
+    team_contribution = all_contributions(team)
+    team_expences = all_expences(team)
+    team_balance = all_balance(team)
+    expence = Expence.objects.get(id=expence_id)
+    if expence.owner != team:
+        raise Http404
+
+    if request.method == 'POST':
+        expence.delete()
+        message = _("Expence has been successfully deleted.")
+        messages.success(request, message)
+        return redirect('web_travel_data:expences', team_id)
+
+    context = {'expence': expence, 'team': team, 'team_balance': team_balance,
+               'team_contribution': team_contribution, 'team_expences': team_expences}
+    return render(request, 'web_travel_data/delete_expence.html', context)

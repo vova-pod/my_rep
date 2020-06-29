@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Member, Contribution, Expence, Exeption, Team
 
@@ -72,5 +73,6 @@ class ExeptionForm(forms.ModelForm):
                                 expence.purpose, str(expence.amount))
 
         if repetition:
-            raise forms.ValidationError(
+            err = _(
                 "Exeption you are trying to add already was established with " + str(repetition))
+            raise forms.ValidationError(err)

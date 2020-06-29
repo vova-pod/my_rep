@@ -107,14 +107,3 @@ def create_member_report(id):
         member_report.add_row(
             [contribution.date_added.strftime("%d/%m/%Y"), contribution.amount])
     return str(member_report)
-
-
-def check_new_exeption(team, new_exeption):
-    repetition = {}
-    for exeption in Exeption.objects.filter(owner=team.id).exclude(id=new_exeption.id):
-        for new_member in new_exeption.member.all():
-            if new_member in exeption.member.all():
-                for new_expence in new_exeption.expence.all():
-                    if new_expence in exeption.expence.all():
-                        repetition[new_member] = new_expence
-    return repetition

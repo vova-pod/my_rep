@@ -49,5 +49,12 @@ urlpatterns = [
     # Page to delete team
     path('delete_team/team_<int:team_id>',
          views.delete_team, name='delete_team'),
+    # Page to delete contribution
+    path('delete_contribution/team_<int:team_id>/delete_contribution_<int:contribution_id>',
+         views.delete_contribution, name='delete_contribution'),
+    # Page to delete spending
+    path('delete_expence/team_<int:team_id>/delete_expence_<int:expence_id>',
+         views.delete_expence, name='delete_expence'),
+
 
 ]
