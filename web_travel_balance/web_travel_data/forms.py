@@ -50,7 +50,25 @@ class ExeptionForm(forms.ModelForm):
                    'name': forms.TextInput(attrs={'placeholder': 'Exception'})}
 
     def __init__(self, team, *args, **kwargs):
+        self.team = team
         super(ExeptionForm, self).__init__(*args, **kwargs)
         self.fields['member'].queryset = Member.objects.filter(owner=team)
         self.fields['expence'].queryset = Expence.objects.filter(owner=team)
         self.fields['note'].required = False
+
+    def clean(self):
+
+        members = self.cleaned_data["member"]
+        expences = self.cleaned_data["expence"]
+
+        repetition = {}
+        for exeption in Exeption.objects.filter(owner=self.team):
+            for member in members:
+                if member in exeption.member.all():
+                    for expence in expences:
+                        if expence in exeption.expence.all():
+                            repetition[member] = expence
+
+        if repetition:
+            raise forms.ValidationError(
+                "Exeption you are trying to add already was established with")

@@ -226,14 +226,7 @@ def new_exeption(request, team_id):
             new_exeption = form.save(commit=False)
             new_exeption.owner = team
             form.save()
-            if check_new_exeption(team, new_exeption):
-                new_exeption.delete()
-                messages.error(
-                    request, "Exeption you are trying to add already was established.")
-                return redirect('web_travel_data:new_exeption', team_id)
-            else:
-                form.save()
-                return redirect('web_travel_data:exeptions', team_id)
+            return redirect('web_travel_data:exeptions', team_id)
 
     # Display a blank or invalid form.
     context = {'form': form, 'team': team, 'team_balance': team_balance,
