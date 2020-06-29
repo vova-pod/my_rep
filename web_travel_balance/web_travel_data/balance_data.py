@@ -62,7 +62,7 @@ def all_exeption_expences(team):
 
 def base_expences_per_member(team):
     if len(Member.objects.filter(owner=team.id)) != 0:
-        if all_balance(team) <= 0:
+        if all_balance(team) < 0:
             return (all_expences(team) - all_exeption_expences(team)) / len(Member.objects.filter(owner=team.id))
         else:
             return (all_contributions(team) - all_exeption_expences(team)) / len(Member.objects.filter(owner=team.id))

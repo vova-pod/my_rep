@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Member, Contribution, Expence, Exeption, Team
+from .balance_data import *
 
 
 class TeamForm(forms.ModelForm):
@@ -37,9 +38,18 @@ class ExpenceForm(forms.ModelForm):
         model = Expence
         fields = ['amount', 'purpose', 'note']
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, team, *args, **kwargs):
+        self.team = team
         super(ExpenceForm, self).__init__(*args, **kwargs)
         self.fields['note'].required = False
+
+    def clean_amount(self):
+        amount = self.cleaned_data['amount']
+
+        if (all_balance(self.team) - amount) < 0:
+            err = _('Not enough money in TeamWallet. Make contribution.')
+            raise forms.ValidationError(err)
+        return amount
 
 
 class ExeptionForm(forms.ModelForm):
@@ -60,8 +70,8 @@ class ExeptionForm(forms.ModelForm):
 
     def clean(self):
 
-        members = self.cleaned_data["member"]
-        expences = self.cleaned_data["expence"]
+        members = self.cleaned_data['member']
+        expences = self.cleaned_data['expence']
 
         repetition = {}
         for exeption in Exeption.objects.filter(owner=self.team).exclude(id=self.exeption_id):
@@ -74,5 +84,5 @@ class ExeptionForm(forms.ModelForm):
 
         if repetition:
             err = _(
-                "Exeption you are trying to add already was established with " + str(repetition))
+                'Exeption you are trying to add already was established with ' + str(repetition))
             raise forms.ValidationError(err)

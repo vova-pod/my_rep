@@ -122,10 +122,10 @@ def expences(request, team_id):
 
     if request.method != 'POST':
         # No data submitted; create a blank form.
-        form = ExpenceForm()
+        form = ExpenceForm(team=team)
     else:
         # POST data submitted, process data
-        form = ExpenceForm(data=request.POST)
+        form = ExpenceForm(team=team, data=request.POST)
         if form.is_valid():
             new_expence = form.save(commit=False)
             new_expence.owner = team
@@ -411,11 +411,10 @@ def edit_expence(request, expence_id, team_id):
 
     if request.method != 'POST':
         # Initial request; prefill form with current entry.
-        form = ExpenceForm(instance=expence)
+        form = ExpenceForm(instance=expence, team=team)
     else:
         # POST data submitted, process data
-        form = ExpenceForm(instance=expence,
-                           data=request.POST)
+        form = ExpenceForm(instance=expence, team=team, data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('web_travel_data:expences', team_id)
