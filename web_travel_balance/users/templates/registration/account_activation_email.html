@@ -2,6 +2,7 @@
 {% autoescape off %}
 {% blocktrans %}Hi{% endblocktrans %} {{ user.username }},
 
+{% blocktrans %}Please follow this link to activate your account.{% endblocktrans %}
 http://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}
 
 {% blocktrans %}If clicking the link above doesn't work, please copy and paste the URL in a new browser

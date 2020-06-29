@@ -11,7 +11,8 @@
 		{% buttons %}
 		<button name="submit" class="btn btn-danger">{% blocktrans %}YES{% endblocktrans %}</button>
 		{% endbuttons %}
-		<p><b><a href="{% url 'web_travel_data:member' team.id member.id %}">{% blocktrans %}CANCEL{% endblocktrans %}</a></b></p>
+		<p><b><a class="btn btn-dark" href="{% url 'web_travel_data:member' team.id member.id %}">{% blocktrans %}CANCEL{% endblocktrans %}</a></b></p>
 	</form>
 
 {% endblock content %}
+

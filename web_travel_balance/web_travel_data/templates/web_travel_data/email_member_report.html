@@ -32,7 +32,7 @@
 		
 		<button name="submit" class="btn btn-dark">{% blocktrans %}Send report{% endblocktrans %}</button>
 		<p></p>
-		<p><a href="{% url 'web_travel_data:member' team.id member.id %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
+		<p><a class="btn btn-dark" href="{% url 'web_travel_data:member' team.id member.id %}"><b>{% blocktrans %}CANCEL{% endblocktrans %}</b></a></p>
 		{% endbuttons %}
 	</form>
 	{% endif %}

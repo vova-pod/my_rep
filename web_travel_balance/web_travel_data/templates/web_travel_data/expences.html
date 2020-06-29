@@ -4,6 +4,14 @@
 
 {% block content %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 	<form action="{% url 'web_travel_data:expences' team.id %}" method="post">
 		{% csrf_token %}
 		{% bootstrap_form form %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 15:35+0000\n"
+"POT-Creation-Date: 2020-06-29 15:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,11 @@ msgstr ""
 msgid "Hi"
 msgstr "Привет"
 
-#: users/templates/registration/account_activation_email.html:7
+#: users/templates/registration/account_activation_email.html:5
+msgid "Please follow this link to activate your account."
+msgstr "Пожалуйста, проследуйте по ссылке, чтобы активировать Вашу учетную запись."
+
+#: users/templates/registration/account_activation_email.html:8
 msgid ""
 "If clicking the link above doesn't work, please copy and paste the URL in a "
 "new browser\n"
@@ -33,7 +37,7 @@ msgstr ""
 "Если нажатие на ссылку не сработает, пожалуйста, скопируйте ссылку и "
 "вставьте ее в браузер"
 
-#: users/templates/registration/account_activation_email.html:10
+#: users/templates/registration/account_activation_email.html:11
 msgid ""
 "Sincerely,\n"
 "The TeamWallet Team"
@@ -56,7 +60,7 @@ msgid ""
 "Create Team Wallet. Keep track of your shared budget and its balance with "
 "tripmates, friends, and family."
 msgstr ""
-"Создай свою команду вместе с TeanWallet. Веди общий бюджет и учет расходов с "
+"Создай свою команду вместе с TeamWallet. Веди общий бюджет и учет расходов с "
 "друзьями и семьей, дома и в путешествиях."
 
 #: users/templates/registration/logged_out.html:15
@@ -167,6 +171,14 @@ msgstr "Введите Ваш e-mail чтобы изменить пароль."
 #: users/templates/registration/password_reset_form.html:11
 msgid "Submit"
 msgstr "Отправить"
+
+#: web_travel_data/forms.py:50
+msgid "Not enough money in TeamWallet. Make contribution."
+msgstr "Недостаточно денег в TeamWallet. Сделайте взнос."
+
+#: web_travel_data/forms.py:87
+msgid "Exeption you are trying to add already was established with "
+msgstr "Исключение, которое Вы пытаетесь добавить, уже было установлено с "
 
 #: web_travel_data/models.py:7
 msgid "Team Name"
@@ -284,26 +296,40 @@ msgstr "Добавить взнос"
 msgid "No contributions has been made yet."
 msgstr "Взносы еще не были сделаны."
 
-#: web_travel_data/templates/web_travel_data/delete_exeption.html:7
-msgid "Delete exception "
-msgstr "Удалить исключение"
+#: web_travel_data/templates/web_travel_data/delete_contribution.html:7
+msgid "Delete contribution "
+msgstr "Удалить взнос "
 
+#: web_travel_data/templates/web_travel_data/delete_contribution.html:7
 #: web_travel_data/templates/web_travel_data/delete_exeption.html:7
+#: web_travel_data/templates/web_travel_data/delete_expence.html:7
 msgid " and all relative information?"
 msgstr " и всю информацию с ним связанную?"
 
+#: web_travel_data/templates/web_travel_data/delete_contribution.html:12
 #: web_travel_data/templates/web_travel_data/delete_exeption.html:12
+#: web_travel_data/templates/web_travel_data/delete_expence.html:12
 #: web_travel_data/templates/web_travel_data/delete_member.html:12
 #: web_travel_data/templates/web_travel_data/delete_team.html:12
 msgid "YES"
 msgstr "Да"
 
+#: web_travel_data/templates/web_travel_data/delete_contribution.html:14
 #: web_travel_data/templates/web_travel_data/delete_exeption.html:14
+#: web_travel_data/templates/web_travel_data/delete_expence.html:14
 #: web_travel_data/templates/web_travel_data/delete_member.html:14
 #: web_travel_data/templates/web_travel_data/delete_team.html:14
 #: web_travel_data/templates/web_travel_data/email_member_report.html:35
 msgid "CANCEL"
 msgstr "Отмена"
+
+#: web_travel_data/templates/web_travel_data/delete_exeption.html:7
+msgid "Delete exception "
+msgstr "Удалить исключение "
+
+#: web_travel_data/templates/web_travel_data/delete_expence.html:7
+msgid "Delete expence "
+msgstr "Удалить расход "
 
 #: web_travel_data/templates/web_travel_data/delete_member.html:7
 #, python-format
@@ -327,6 +353,10 @@ msgstr "Редактировать информацию о взносе:"
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
+#: web_travel_data/templates/web_travel_data/edit_contribution.html:17
+msgid "Delete contribution"
+msgstr "Удалить взнос"
+
 #: web_travel_data/templates/web_travel_data/edit_exeption.html:7
 msgid "Edit exception info:"
 msgstr "Редактировать исключение:"
@@ -338,6 +368,10 @@ msgstr "Удалить исключение"
 #: web_travel_data/templates/web_travel_data/edit_expence.html:7
 msgid "Edit expence info:"
 msgstr "Редактировать информацию о расходе:"
+
+#: web_travel_data/templates/web_travel_data/edit_expence.html:17
+msgid "Delete an expence"
+msgstr "Удалить расход"
 
 #: web_travel_data/templates/web_travel_data/edit_member.html:7
 msgid "Edit member info:"
@@ -400,7 +434,7 @@ msgstr "Взносы еще не были сделаны."
 
 #: web_travel_data/templates/web_travel_data/index.html:16
 msgid "Choose your team to manage its balance or create a new one."
-msgstr "Выберите свою команду для управления балансом или создайте новую"
+msgstr "Выберите свою команду для управления балансом или создайте новую."
 
 #: web_travel_data/templates/web_travel_data/index.html:21
 msgid "Teams"
@@ -408,7 +442,7 @@ msgstr "Команды"
 
 #: web_travel_data/templates/web_travel_data/index.html:35
 msgid "Create new team:"
-msgstr "Создай новую команду"
+msgstr "Создай новую команду:"
 
 #: web_travel_data/templates/web_travel_data/index.html:41
 msgid "Create team"
@@ -454,11 +488,11 @@ msgstr "Участники еще не были добавлены."
 msgid "Add a new member"
 msgstr "Добавить нового участника"
 
-#: web_travel_data/templates/web_travel_data/new_exeption.html:7
+#: web_travel_data/templates/web_travel_data/new_exeption.html:15
 msgid "Add a new exeption:"
 msgstr "Добавить новое исключение"
 
-#: web_travel_data/templates/web_travel_data/new_exeption.html:13
+#: web_travel_data/templates/web_travel_data/new_exeption.html:21
 msgid "Add exception"
 msgstr "Добавить исключение"
 
@@ -482,11 +516,11 @@ msgstr "Исключение было успешно удалено."
 msgid "TeamWallet info for "
 msgstr "TeamWallet информация для "
 
-#: web_travel_data/views.py:338
+#: web_travel_data/views.py:339
 msgid "Email has been sent."
 msgstr "E-mail был отправлен."
 
-#: web_travel_data/views.py:360
+#: web_travel_data/views.py:361
 msgid "Member has been successfully deleted."
 msgstr "Участник был успешно удалён."
 
@@ -494,3 +528,10 @@ msgstr "Участник был успешно удалён."
 msgid "Team has been successfully deleted."
 msgstr "Команда была успешно удалена."
 
+#: web_travel_data/views.py:463
+msgid "Contribution has been successfully deleted."
+msgstr "Взнос был успешно удалено."
+
+#: web_travel_data/views.py:487
+msgid "Expence has been successfully deleted."
+msgstr "Расход было успешно удалено."
