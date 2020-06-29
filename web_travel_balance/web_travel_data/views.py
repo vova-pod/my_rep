@@ -218,10 +218,10 @@ def new_exeption(request, team_id):
     team_balance = all_balance(team)
     if request.method != 'POST':
         # No data submitted; create a blank form.
-        form = ExeptionForm(team=team)
+        form = ExeptionForm(team=team, exeption_id=None)
     else:
         # POST data submitted, process data
-        form = ExeptionForm(data=request.POST, team=team)
+        form = ExeptionForm(data=request.POST, team=team, exeption_id=None)
         if form.is_valid():
             new_exeption = form.save(commit=False)
             new_exeption.owner = team
@@ -249,11 +249,12 @@ def edit_exeption(request, exeption_id, team_id):
 
     if request.method != 'POST':
         # Initial request; prefill form with current entry.
-        form = ExeptionForm(instance=exeption, team=team)
+        form = ExeptionForm(instance=exeption, team=team,
+                            exeption_id=exeption_id)
     else:
         # POST data submitted, process data
         form = ExeptionForm(instance=exeption,
-                            data=request.POST, team=team)
+                            data=request.POST, team=team, exeption_id=exeption_id)
         if form.is_valid():
             form.save()
             return redirect('web_travel_data:exeptions', team_id)

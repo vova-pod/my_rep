@@ -49,8 +49,9 @@ class ExeptionForm(forms.ModelForm):
                    'expence': forms.CheckboxSelectMultiple,
                    'name': forms.TextInput(attrs={'placeholder': 'Exception'})}
 
-    def __init__(self, team, *args, **kwargs):
+    def __init__(self, team, exeption_id, *args, **kwargs):
         self.team = team
+        self.exeption_id = exeption_id
         super(ExeptionForm, self).__init__(*args, **kwargs)
         self.fields['member'].queryset = Member.objects.filter(owner=team)
         self.fields['expence'].queryset = Expence.objects.filter(owner=team)
@@ -62,13 +63,14 @@ class ExeptionForm(forms.ModelForm):
         expences = self.cleaned_data["expence"]
 
         repetition = {}
-        for exeption in Exeption.objects.filter(owner=self.team):
+        for exeption in Exeption.objects.filter(owner=self.team).exclude(id=self.exeption_id):
             for member in members:
                 if member in exeption.member.all():
                     for expence in expences:
                         if expence in exeption.expence.all():
-                            repetition[member] = expence
+                            repetition[member.name] = (
+                                expence.purpose, str(expence.amount))
 
         if repetition:
             raise forms.ValidationError(
-                "Exeption you are trying to add already was established with")
+                "Exeption you are trying to add already was established with " + str(repetition))
