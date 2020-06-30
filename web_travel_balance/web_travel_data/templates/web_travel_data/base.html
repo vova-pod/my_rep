@@ -25,12 +25,12 @@
 
 		{% if team is not None %}
 		<a class="navbar-brand" href="{% url 'web_travel_data:balance' team.id %}">		
-			<img src="{% static 'web_travel_data/7.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+			<img src="{% static 'web_travel_data/7.png' %}" width="35" height="35" class="d-inline-block align-bottom" alt="">&nbsp;
 		TeamWallet:{{ team.name }}&nbsp;&nbsp;&nbsp;<normal style="color:{% if team_balance < 0 %}red{% else %}green{% endif %}">{{ team_balance }}</normal>
 		</a>
 		{% else %}
 		<a class="navbar-brand" href="{% url 'web_travel_data:index' %}">
-			<img src="{% static 'web_travel_data/7.png' %}" width="40" height="40" class="d-inline-block align-top" alt="">
+			<img src="{% static 'web_travel_data/7.png' %}" width="35" height="35" class="d-inline-block align-bottom" alt="">&nbsp;
 		TeamWallet</a>
 		{% endif %}
 
