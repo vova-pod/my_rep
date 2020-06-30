@@ -13,9 +13,9 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(
         max_length=254, help_text=_('Enter a valid email address'))
     password1 = forms.CharField(
-        max_length=30, label=_('Password'), help_text=_('Your password must contain at least 8 characters. Can’t be too similar to your other personal information, commonly used password and entirely numeric.'))
+        max_length=30, label=_('Password'), widget=forms.PasswordInput, help_text=_('Your password must contain at least 8 characters. Can’t be too similar to your other personal information, commonly used password and entirely numeric.'))
     password2 = forms.CharField(
-        max_length=30, label=_('Password confirmation'), help_text=_('Enter the same password as before, for verification.'))
+        max_length=30, label=_('Password confirmation'), widget=forms.PasswordInput, help_text=_('Enter the same password as before, for verification.'))
 
     class Meta:
         model = User
