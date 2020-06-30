@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:36+0000\n"
+"POT-Creation-Date: 2020-06-30 10:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,55 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: users/forms.py:10
+msgid "First name"
+msgstr "Имя"
+
+#: users/forms.py:10
+msgid "Enter your first name"
+msgstr "Введите ваше имя"
+
+#: users/forms.py:12
+msgid "Last name"
+msgstr "Фамилия"
+
+#: users/forms.py:12
+msgid "Enter your last name"
+msgstr "Введите фамилию"
+
+#: users/forms.py:14
+msgid "Enter a valid email address"
+msgstr "Введите действующий e-mail"
+
+#: users/forms.py:16
+msgid "Password"
+msgstr "Пароль"
+
+#: users/forms.py:16
+msgid ""
+"Your password must contain at least 8 characters. Can’t be too similar to "
+"your other personal information, commonly used password and entirely numeric."
+msgstr ""
+"Ваш пароль должен содержать как минимум 8 символов. Не должен отражать "
+"персональную информацию, быть лекго вычисляемым. Должен содержать буквы и "
+"цифры."
+
+#: users/forms.py:18
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"
+
+#: users/forms.py:18
+msgid "Enter the same password as before, for verification."
+msgstr "Повторите ввод пароля."
+
 #: users/templates/registration/account_activation_email.html:3
 msgid "Hi"
 msgstr "Привет"
 
 #: users/templates/registration/account_activation_email.html:5
 msgid "Please follow this link to activate your account."
-msgstr "Пожалуйста, проследуйте по ссылке, чтобы активировать Вашу учетную запись."
+msgstr ""
+"Пожалуйста, проследуйте по ссылке, чтобы активировать Вашу учетную запись."
 
 #: users/templates/registration/account_activation_email.html:8
 msgid ""
@@ -57,11 +99,11 @@ msgstr "Team Wallet."
 #: users/templates/registration/logged_out.html:13
 #: users/templates/registration/login.html:18
 msgid ""
-"Create Team Wallet. Keep track of your shared budget and its balance with "
-"tripmates, friends, and family."
+"Create Team Wallet. Keep track of your shared budget and spendings with "
+"friends and family at home and while traveling."
 msgstr ""
-"Создай свою команду вместе с TeamWallet. Веди общий бюджет и учет расходов с "
-"друзьями и семьей, дома и в путешествиях."
+"Создайте свою команду вместе с TeamWallet. Ведите общий бюджет и учет "
+"расходов с друзьями и семьей, дома и в путешествиях."
 
 #: users/templates/registration/logged_out.html:15
 #: users/templates/registration/login.html:40
@@ -172,6 +214,13 @@ msgstr "Введите Ваш e-mail чтобы изменить пароль."
 msgid "Submit"
 msgstr "Отправить"
 
+#: users/templates/registration/signup.html:5
+#: users/templates/registration/signup.html:9
+#, fuzzy
+#| msgid "Register"
+msgid "Registration."
+msgstr "Зарегистрироваться"
+
 #: web_travel_data/forms.py:50
 msgid "Not enough money in TeamWallet. Make contribution."
 msgstr "Недостаточно денег в TeamWallet. Сделайте взнос."
@@ -193,20 +242,20 @@ msgid "E-mail"
 msgstr "E-mail"
 
 #: web_travel_data/models.py:33 web_travel_data/models.py:64
-#: web_travel_data/templates/web_travel_data/contributions.html:22
+#: web_travel_data/templates/web_travel_data/contributions.html:30
 msgid "Member"
 msgstr "Участник"
 
 #: web_travel_data/models.py:35 web_travel_data/models.py:49
-#: web_travel_data/templates/web_travel_data/contributions.html:21
+#: web_travel_data/templates/web_travel_data/contributions.html:29
 #: web_travel_data/templates/web_travel_data/exeptions.html:21
-#: web_travel_data/templates/web_travel_data/expences.html:20
+#: web_travel_data/templates/web_travel_data/expences.html:28
 msgid "Amount"
 msgstr "Сумма"
 
 #: web_travel_data/models.py:37 web_travel_data/models.py:52
-#: web_travel_data/templates/web_travel_data/contributions.html:20
-#: web_travel_data/templates/web_travel_data/expences.html:19
+#: web_travel_data/templates/web_travel_data/contributions.html:28
+#: web_travel_data/templates/web_travel_data/expences.html:27
 #: web_travel_data/templates/web_travel_data/member.html:30
 #: web_travel_data/templates/web_travel_data/member_email.html:43
 msgid "Date"
@@ -214,14 +263,14 @@ msgstr "Дата"
 
 #: web_travel_data/models.py:39 web_travel_data/models.py:54
 #: web_travel_data/models.py:68
-#: web_travel_data/templates/web_travel_data/contributions.html:23
+#: web_travel_data/templates/web_travel_data/contributions.html:31
 #: web_travel_data/templates/web_travel_data/exeptions.html:23
-#: web_travel_data/templates/web_travel_data/expences.html:22
+#: web_travel_data/templates/web_travel_data/expences.html:30
 msgid "Note"
 msgstr "Примечание"
 
 #: web_travel_data/models.py:50
-#: web_travel_data/templates/web_travel_data/expences.html:21
+#: web_travel_data/templates/web_travel_data/expences.html:29
 msgid "Purpose"
 msgstr "Назначение"
 
@@ -287,11 +336,11 @@ msgstr "РАСХОДЫ"
 msgid "EXEPTION"
 msgstr "ИСКЛЮЧЕНИЯ"
 
-#: web_travel_data/templates/web_travel_data/contributions.html:12
+#: web_travel_data/templates/web_travel_data/contributions.html:20
 msgid "Add contribution"
 msgstr "Добавить взнос"
 
-#: web_travel_data/templates/web_travel_data/contributions.html:35
+#: web_travel_data/templates/web_travel_data/contributions.html:43
 #: web_travel_data/templates/web_travel_data/member.html:41
 msgid "No contributions has been made yet."
 msgstr "Взносы еще не были сделаны."
@@ -423,12 +472,12 @@ msgstr "Расходы еще не были сделаны."
 msgid "Add Exception"
 msgstr "Добавить исключение"
 
-#: web_travel_data/templates/web_travel_data/expences.html:11
+#: web_travel_data/templates/web_travel_data/expences.html:19
 #: web_travel_data/templates/web_travel_data/new_expence.html:11
 msgid "Add spending"
 msgstr "Добавить расход"
 
-#: web_travel_data/templates/web_travel_data/expences.html:34
+#: web_travel_data/templates/web_travel_data/expences.html:42
 msgid "No expences has been made yet."
 msgstr "Взносы еще не были сделаны."
 
@@ -535,3 +584,21 @@ msgstr "Взнос был успешно удалено."
 #: web_travel_data/views.py:487
 msgid "Expence has been successfully deleted."
 msgstr "Расход было успешно удалено."
+
+#~ msgid ""
+#~ "Your password can’t be too similar to your other personal information."
+#~ "<br />Your password must contain at least 8 characters.<br />Your "
+#~ "password can’t be a commonly used password.<br />Your password can’t be "
+#~ "entirely numeric."
+#~ msgstr ""
+#~ "Ваш пароль не должен быть близок к вашей персональной информации.<br /"
+#~ ">Длина пароля должна быть не менее 8 символов.<br />Пароль не должен "
+#~ "включать в себя легко вычисляемые сочетания символов.<br />В пароле "
+#~ "должны присутствовать буквы и цифры"
+
+#~ msgid ""
+#~ "Create Team Wallet. Keep track of your shared budget and its balance with "
+#~ "tripmates, friends, and family."
+#~ msgstr ""
+#~ "Создай свою команду вместе с TeamWallet. Веди общий бюджет и учет "
+#~ "расходов с друзьями и семьей, дома и в путешествиях."

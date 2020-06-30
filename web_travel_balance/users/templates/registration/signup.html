@@ -2,11 +2,11 @@
 {% load bootstrap4 %}
 {% load i18n %}
 
-{% block title %}Sign Page{% endblock title %}
+{% block title %}{% blocktrans %}Registration.{% endblocktrans %}{% endblock title %}
 
 {% block content %} 
 
-    <h2>Sign Page</h2>
+    <h2>{% blocktrans %}Registration.{% endblocktrans %}</h2>
     <form method="post" action="{% url 'users:signup' %}">
 		{% csrf_token %}
 		{% bootstrap_form form %}

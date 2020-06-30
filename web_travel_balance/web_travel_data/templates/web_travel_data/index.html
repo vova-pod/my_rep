@@ -26,7 +26,7 @@
   	{% for team in teams %}
   	<tr>      
       <th><a href="{% url 'web_travel_data:balance' team.id %}" style="color:black">{{ team.name }}</a></th>
-      <th><a href="{% url 'web_travel_data:delete_team' team.id %}"><img src="{% static 'web_travel_data/noun_Delete_1378793.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""></a></th>
+      <th><a href="{% url 'web_travel_data:delete_team' team.id %}"><img src="{% static 'web_travel_data/4.png' %}" width="25" height="25" class="d-inline-block align-top" alt=""></a></th>
     </tr>
     {% endfor %}
   </tbody>
