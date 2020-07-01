@@ -38,15 +38,20 @@ class ExpenceForm(forms.ModelForm):
         model = Expence
         fields = ['amount', 'purpose', 'note']
 
-    def __init__(self, team, *args, **kwargs):
+    def __init__(self, team, expence_id, *args, **kwargs):
         self.team = team
+        self.expence_id = expence_id
         super(ExpenceForm, self).__init__(*args, **kwargs)
         self.fields['note'].required = False
 
     def clean_amount(self):
         amount = self.cleaned_data['amount']
-
-        if (all_balance(self.team) - amount) < 0:
+        if self.expence_id is not None:
+            expence = Expence.objects.get(id=self.expence_id)
+            expence_amount = expence.amount
+        else:
+            expence_amount = 0
+        if (all_balance(self.team) + expence_amount - amount) < 0:
             err = _('Not enough money in TeamWallet. Make contribution.')
             raise forms.ValidationError(err)
         return amount

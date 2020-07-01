@@ -122,10 +122,10 @@ def expences(request, team_id):
 
     if request.method != 'POST':
         # No data submitted; create a blank form.
-        form = ExpenceForm(team=team)
+        form = ExpenceForm(team=team, expence_id=None)
     else:
         # POST data submitted, process data
-        form = ExpenceForm(team=team, data=request.POST)
+        form = ExpenceForm(team=team, expence_id=None, data=request.POST)
         if form.is_valid():
             new_expence = form.save(commit=False)
             new_expence.owner = team
@@ -333,7 +333,7 @@ def email_member_report(request, member_id, team_id):
             subject = _('TeamWallet info for ' +
                         str(member.name) + ' from ' + str(team.name))
             msg = EmailMultiAlternatives(subject, create_member_report(
-                member_id), 'cutterw7@gmail.com', [member.email])
+                member_id), 'no-reply@crewwallet.co', [member.email])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
             message = _("Email has been sent.")
@@ -411,10 +411,11 @@ def edit_expence(request, expence_id, team_id):
 
     if request.method != 'POST':
         # Initial request; prefill form with current entry.
-        form = ExpenceForm(instance=expence, team=team)
+        form = ExpenceForm(instance=expence, team=team, expence_id=expence_id)
     else:
         # POST data submitted, process data
-        form = ExpenceForm(instance=expence, team=team, data=request.POST)
+        form = ExpenceForm(instance=expence, team=team,
+                           expence_id=expence_id, data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('web_travel_data:expences', team_id)

@@ -29,6 +29,9 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = ['wallet4team.herokuapp.com',
                  'localhost', '127.0.0.1',
                  'www.crewwallet.co',
+                 'crewwallet.co',
+                 'www.crewwallet.me',
+                 'crewwallet.me',
                  ]
 
 
@@ -159,6 +162,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
 
 # My settings
