@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'six',
     'analytical',
+    'rosetta',
 
 
     # Default Django apps
@@ -68,6 +69,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'web_travel_balance.urls'
 
@@ -178,4 +182,4 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # django-analytical settings
-CLICKY_SITE_ID = '101264074'
+CLICKY_SITE_ID = config('CLICKY_SITE_ID')

@@ -8,17 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-30 10:49+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-07-01 17:52+0000\n"
+"PO-Revision-Date: 2020-07-01 17:56+0000\n"
+"Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
 
 #: users/forms.py:10
 msgid "First name"
@@ -34,7 +33,7 @@ msgstr "Фамилия"
 
 #: users/forms.py:12
 msgid "Enter your last name"
-msgstr "Введите фамилию"
+msgstr "Введите вашу фамилию"
 
 #: users/forms.py:14
 msgid "Enter a valid email address"
@@ -47,10 +46,11 @@ msgstr "Пароль"
 #: users/forms.py:16
 msgid ""
 "Your password must contain at least 8 characters. Can’t be too similar to "
-"your other personal information, commonly used password and entirely numeric."
+"your other personal information, commonly used password and entirely "
+"numeric."
 msgstr ""
 "Ваш пароль должен содержать как минимум 8 символов. Не должен отражать "
-"персональную информацию, быть лекго вычисляемым. Должен содержать буквы и "
+"персональную информацию, быть легко вычисляемым. Должен содержать буквы и "
 "цифры."
 
 #: users/forms.py:18
@@ -72,8 +72,7 @@ msgstr ""
 
 #: users/templates/registration/account_activation_email.html:8
 msgid ""
-"If clicking the link above doesn't work, please copy and paste the URL in a "
-"new browser\n"
+"If clicking the link above doesn't work, please copy and paste the URL in a new browser\n"
 "window instead."
 msgstr ""
 "Если нажатие на ссылку не сработает, пожалуйста, скопируйте ссылку и "
@@ -82,57 +81,58 @@ msgstr ""
 #: users/templates/registration/account_activation_email.html:11
 msgid ""
 "Sincerely,\n"
-"The TeamWallet Team"
+"CrewWallet Team"
 msgstr ""
 "Искренне ваша,\n"
-"Команда TeamWallet"
+"Команда CrewWallet"
 
 #: users/templates/registration/logged_out.html:8
 msgid "You have been logged out. Thank you for visiting."
 msgstr "Вы вышли из приложения. Спасибо за визит."
 
-#: users/templates/registration/logged_out.html:11
-#: users/templates/registration/login.html:16
-msgid "Team Wallet."
-msgstr "Team Wallet."
-
-#: users/templates/registration/logged_out.html:13
+#: users/templates/registration/logged_out.html:12
 #: users/templates/registration/login.html:18
+msgid "CrewWallet"
+msgstr "CrewWallet."
+
+#: users/templates/registration/logged_out.html:14
+#: users/templates/registration/login.html:20
 msgid ""
-"Create Team Wallet. Keep track of your shared budget and spendings with "
+"Create CrewWallet. Keep track of your shared budget and spendings with "
 "friends and family at home and while traveling."
 msgstr ""
-"Создайте свою команду вместе с TeamWallet. Ведите общий бюджет и учет "
+"Создайте свою команду вместе с CrewWallet. Ведите общий бюджет и учет "
 "расходов с друзьями и семьей, дома и в путешествиях."
 
-#: users/templates/registration/logged_out.html:15
-#: users/templates/registration/login.html:40
+#: users/templates/registration/logged_out.html:16
+#: users/templates/registration/login.html:42
 #: users/templates/registration/signup.html:14
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: users/templates/registration/logged_out.html:16
-#: users/templates/registration/login.html:32
+#: users/templates/registration/logged_out.html:17
+#: users/templates/registration/login.html:34
 msgid "Log in"
 msgstr "Войти"
 
-#: users/templates/registration/login.html:20
+#: users/templates/registration/login.html:22
 msgid "Log in with your e-mail as username:"
 msgstr "Войдите, используя ваш e-mail как имя пользователя."
 
-#: users/templates/registration/login.html:25
+#: users/templates/registration/login.html:27
 msgid "Your username and password did not match. Please try again."
 msgstr "Ваше имя и пароль не верны. Попробуйте еще раз."
 
-#: users/templates/registration/login.html:37
-msgid "If you do not have an account please register."
-msgstr "Если у Вас нет учетной записи, пожалуйста, зарегистрируйтесь"
+#: users/templates/registration/login.html:39
+msgid "If you do not have a CrewWallet account please register."
+msgstr ""
+"Если у вас нет учетной записи CrewWallet, пожалуйста, зарегистрируйтесь"
 
-#: users/templates/registration/login.html:43
+#: users/templates/registration/login.html:45
 msgid "If you forget your password please request password reset."
-msgstr "Если Вы забыли Ваш пароль, пожалуйста, запросите его замену."
+msgstr "Если вы забыли ваш пароль, пожалуйста, запросите его замену."
 
-#: users/templates/registration/login.html:46
+#: users/templates/registration/login.html:48
 msgid "Reset"
 msgstr "Запросить"
 
@@ -141,7 +141,7 @@ msgid "Your password has been set. You may go ahead."
 msgstr "Ваш пароль был установлен. Теперь вы можете войти в приложение."
 
 #: users/templates/registration/password_reset_complete.html:11
-#: web_travel_data/templates/web_travel_data/base.html:53
+#: web_travel_data/templates/web_travel_data/base.html:58
 msgid "LOG IN"
 msgstr "ВХОД"
 
@@ -152,27 +152,23 @@ msgstr "Изменить пароль"
 
 #: users/templates/registration/password_reset_confirm.html:18
 msgid ""
-"The password reset link was invalid, possibly because it has already been "
-"used.\n"
+"The password reset link was invalid, possibly because it has already been used.\n"
 "      Please request a new password reset."
 msgstr ""
 "Ссылка на смену пароля не действительна, возможно она уже была использована."
-"Пожалуйста запросите новую замену пароля."
+" Пожалуйста запросите новую замену пароля."
 
 #: users/templates/registration/password_reset_done.html:8
 msgid ""
-"We've emailed you instructions for setting your password, if an account "
-"exists with the email you entered.\n"
+"We've emailed you instructions for setting your password, if an account exists with the email you entered.\n"
 "    You should receive them shortly."
 msgstr ""
-"Мы отправили Вам инструкции по смене пароля. Если учетная запись "
-"существует,\n"
-"Вы их вскоре получите."
+"Мы отправили вам инструкции по смене пароля. Если учетная запись существует,\n"
+"вы их вскоре получите."
 
 #: users/templates/registration/password_reset_done.html:12
 msgid ""
-"If you don't receive an email, please make sure you've entered the address "
-"you registered with,\n"
+"If you don't receive an email, please make sure you've entered the address you registered with,\n"
 "    and check your spam folder."
 msgstr ""
 "Если Вы не получили e-mail, пожалуйста, убедитесь, что вы ввели адрес с "
@@ -183,11 +179,14 @@ msgid "Hi,"
 msgstr "Привет,"
 
 #: users/templates/registration/password_reset_email.html:4
+#| msgid ""
+#| "To initiate the password reset process for your TeamWallet Account,\n"
+#| "click the link below:"
 msgid ""
-"To initiate the password reset process for your TeamWallet Account,\n"
+"To initiate the password reset process for your CrewWallet Account,\n"
 "click the link below:"
 msgstr ""
-"Для запуска процедуры изменения пароля для вашей учетной записи TeamWallet,\n"
+"Для запуска процедуры изменения пароля для вашей учетной записи CrewWallet,\n"
 "прйдите по ссылке ниже:"
 
 #: users/templates/registration/password_reset_email.html:9
@@ -199,12 +198,15 @@ msgstr ""
 "вставьте ее в браузер"
 
 #: users/templates/registration/password_reset_email.html:11
+#| msgid ""
+#| "Sincerely, \n"
+#| "The TeamWallet Team"
 msgid ""
 "Sincerely, \n"
-"The TeamWallet Team"
+"CrewWallet Team"
 msgstr ""
 "Искренне ваша,\n"
-"Команда TeamWallet"
+"Команда CrewWallet"
 
 #: users/templates/registration/password_reset_form.html:6
 msgid "Enter your e-mail to reset password."
@@ -221,11 +223,11 @@ msgstr "Отправить"
 msgid "Registration."
 msgstr "Зарегистрироваться"
 
-#: web_travel_data/forms.py:50
+#: web_travel_data/forms.py:55
 msgid "Not enough money in TeamWallet. Make contribution."
 msgstr "Недостаточно денег в TeamWallet. Сделайте взнос."
 
-#: web_travel_data/forms.py:87
+#: web_travel_data/forms.py:92
 msgid "Exeption you are trying to add already was established with "
 msgstr "Исключение, которое Вы пытаетесь добавить, уже было установлено с "
 
@@ -291,8 +293,9 @@ msgid "add member"
 msgstr "добавить участника"
 
 #: web_travel_data/templates/web_travel_data/balance.html:15
-msgid "Team Member"
-msgstr "Участник"
+#| msgid "Team Member"
+msgid "Crew Member"
+msgstr "Участник команды"
 
 #: web_travel_data/templates/web_travel_data/balance.html:16
 #: web_travel_data/templates/web_travel_data/member.html:31
@@ -312,27 +315,27 @@ msgstr "Баланс расчёта"
 msgid "+ Add Member"
 msgstr "+ Добавить участника"
 
-#: web_travel_data/templates/web_travel_data/base.html:46
+#: web_travel_data/templates/web_travel_data/base.html:51
 msgid "TEAMS"
 msgstr "КОМАНДЫ"
 
-#: web_travel_data/templates/web_travel_data/base.html:49
+#: web_travel_data/templates/web_travel_data/base.html:54
 msgid "LOG OUT"
 msgstr "ВЫХОД"
 
-#: web_travel_data/templates/web_travel_data/base.html:56
+#: web_travel_data/templates/web_travel_data/base.html:61
 msgid "REGISTER"
 msgstr "РЕГИСТРАЦИЯ"
 
-#: web_travel_data/templates/web_travel_data/base.html:92
+#: web_travel_data/templates/web_travel_data/base.html:97
 msgid "CONTRIBUTION"
 msgstr "ВЗНОСЫ"
 
-#: web_travel_data/templates/web_travel_data/base.html:95
+#: web_travel_data/templates/web_travel_data/base.html:100
 msgid "SPENDING"
 msgstr "РАСХОДЫ"
 
-#: web_travel_data/templates/web_travel_data/base.html:98
+#: web_travel_data/templates/web_travel_data/base.html:103
 msgid "EXEPTION"
 msgstr "ИСКЛЮЧЕНИЯ"
 
@@ -387,7 +390,8 @@ msgstr "Удалить участника %(member)s и всю связанну�
 
 #: web_travel_data/templates/web_travel_data/delete_team.html:7
 #, python-format
-msgid "Delete team %(team.name)s and all relative information?"
+#| msgid "Delete team %(team.name)s and all relative information?"
+msgid "Delete crew %(team.name)s and all relative information?"
 msgstr "Удалить команду %(team.name)s и всю связанную с ней информацию?"
 
 #: web_travel_data/templates/web_travel_data/edit_contribution.html:7
@@ -460,7 +464,6 @@ msgid "Exception"
 msgstr "Исключение"
 
 #: web_travel_data/templates/web_travel_data/exeptions.html:22
-#: web_travel_data/templates/web_travel_data/members.html:6
 msgid "Members"
 msgstr "Участник"
 
@@ -482,19 +485,22 @@ msgid "No expences has been made yet."
 msgstr "Взносы еще не были сделаны."
 
 #: web_travel_data/templates/web_travel_data/index.html:16
-msgid "Choose your team to manage its balance or create a new one."
+#| msgid "Choose your team to manage its balance or create a new one."
+msgid "Choose your crew to manage its balance or create a new one."
 msgstr "Выберите свою команду для управления балансом или создайте новую."
 
 #: web_travel_data/templates/web_travel_data/index.html:21
-msgid "Teams"
-msgstr "Команды"
+msgid "Crews"
+msgstr ""
 
 #: web_travel_data/templates/web_travel_data/index.html:35
-msgid "Create new team:"
-msgstr "Создай новую команду:"
+#| msgid "Create new team:"
+msgid "Create new crew:"
+msgstr "Создайте новую команду:"
 
 #: web_travel_data/templates/web_travel_data/index.html:41
-msgid "Create team"
+#| msgid "Create team"
+msgid "Create crew"
 msgstr "Создать команду"
 
 #: web_travel_data/templates/web_travel_data/member.html:23
@@ -506,8 +512,9 @@ msgid "Hello"
 msgstr "Привет"
 
 #: web_travel_data/templates/web_travel_data/member_email.html:19
-msgid "Our TeaMWallet balance is"
-msgstr "Баланс TeamWallet равен"
+#| msgid "Our TeaMWallet balance is"
+msgid "CrewWallet balance is"
+msgstr "Баланс CrewWallet равен"
 
 #: web_travel_data/templates/web_travel_data/member_email.html:20
 msgid "Total contributions are"
@@ -528,14 +535,6 @@ msgstr "Ваш текущий баланс"
 #: web_travel_data/templates/web_travel_data/member_email.html:28
 msgid "Your closing Balance"
 msgstr "Ваш баланс при расчете"
-
-#: web_travel_data/templates/web_travel_data/members.html:14
-msgid "No members have been added yet."
-msgstr "Участники еще не были добавлены."
-
-#: web_travel_data/templates/web_travel_data/members.html:18
-msgid "Add a new member"
-msgstr "Добавить нового участника"
 
 #: web_travel_data/templates/web_travel_data/new_exeption.html:15
 msgid "Add a new exeption:"
@@ -562,8 +561,9 @@ msgid "Exeption has been successfully deleted."
 msgstr "Исключение было успешно удалено."
 
 #: web_travel_data/views.py:333
-msgid "TeamWallet info for "
-msgstr "TeamWallet информация для "
+#| msgid "TeamWallet info for "
+msgid "CrewWallet info for "
+msgstr "CrewWallet информация для "
 
 #: web_travel_data/views.py:339
 msgid "Email has been sent."
@@ -573,32 +573,40 @@ msgstr "E-mail был отправлен."
 msgid "Member has been successfully deleted."
 msgstr "Участник был успешно удалён."
 
-#: web_travel_data/views.py:439
+#: web_travel_data/views.py:440
 msgid "Team has been successfully deleted."
 msgstr "Команда была успешно удалена."
 
-#: web_travel_data/views.py:463
+#: web_travel_data/views.py:464
 msgid "Contribution has been successfully deleted."
 msgstr "Взнос был успешно удалено."
 
-#: web_travel_data/views.py:487
+#: web_travel_data/views.py:488
 msgid "Expence has been successfully deleted."
 msgstr "Расход было успешно удалено."
 
+#~ msgid "Teams"
+#~ msgstr "Команды"
+
+#~ msgid "No members have been added yet."
+#~ msgstr "Участники еще не были добавлены."
+
+#~ msgid "Add a new member"
+#~ msgstr "Добавить нового участника"
+
 #~ msgid ""
-#~ "Your password can’t be too similar to your other personal information."
-#~ "<br />Your password must contain at least 8 characters.<br />Your "
-#~ "password can’t be a commonly used password.<br />Your password can’t be "
-#~ "entirely numeric."
+#~ "Your password can’t be too similar to your other personal information.<br "
+#~ "/>Your password must contain at least 8 characters.<br />Your password can’t"
+#~ " be a commonly used password.<br />Your password can’t be entirely numeric."
 #~ msgstr ""
-#~ "Ваш пароль не должен быть близок к вашей персональной информации.<br /"
-#~ ">Длина пароля должна быть не менее 8 символов.<br />Пароль не должен "
-#~ "включать в себя легко вычисляемые сочетания символов.<br />В пароле "
-#~ "должны присутствовать буквы и цифры"
+#~ "Ваш пароль не должен быть близок к вашей персональной информации.<br />Длина"
+#~ " пароля должна быть не менее 8 символов.<br />Пароль не должен включать в "
+#~ "себя легко вычисляемые сочетания символов.<br />В пароле должны "
+#~ "присутствовать буквы и цифры"
 
 #~ msgid ""
 #~ "Create Team Wallet. Keep track of your shared budget and its balance with "
 #~ "tripmates, friends, and family."
 #~ msgstr ""
-#~ "Создай свою команду вместе с TeamWallet. Веди общий бюджет и учет "
-#~ "расходов с друзьями и семьей, дома и в путешествиях."
+#~ "Создай свою команду вместе с TeamWallet. Веди общий бюджет и учет расходов с"
+#~ " друзьями и семьей, дома и в путешествиях."

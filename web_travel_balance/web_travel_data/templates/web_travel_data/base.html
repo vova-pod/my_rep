@@ -10,10 +10,11 @@
 <html lang="en">
 <head>
 	{% analytical_head_top %}
+	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
 	<link rel="stylesheet" href="{% static 'web_travel_data/table.css' %}">
-	<title>TeamWallet</title>
+	<title>CrewWallet</title>
 	<link rel="shortcut icon" type="image/png" href="{%  static 'web_travel_data/7.png' %}">
 
 	{% analytical_head_bottom %}
@@ -26,12 +27,12 @@
 		{% if team is not None %}
 		<a class="navbar-brand" href="{% url 'web_travel_data:balance' team.id %}">		
 			<img src="{% static 'web_travel_data/7.png' %}" width="35" height="35" class="d-inline-block align-bottom" alt="">&nbsp;
-		TeamWallet:{{ team.name }}&nbsp;&nbsp;&nbsp;<normal style="color:{% if team_balance < 0 %}red{% else %}green{% endif %}">{{ team_balance }}</normal>
+		CrewWallet:&nbsp;{{ team.name }}&nbsp;&nbsp;&nbsp;<normal style="color:{% if team_balance < 0 %}red{% else %}green{% endif %}">{{ team_balance }}</normal>
 		</a>
 		{% else %}
 		<a class="navbar-brand" href="{% url 'web_travel_data:index' %}">
 			<img src="{% static 'web_travel_data/7.png' %}" width="35" height="35" class="d-inline-block align-bottom" alt="">&nbsp;
-		TeamWallet</a>
+		CrewWallet</a>
 		{% endif %}
 
 

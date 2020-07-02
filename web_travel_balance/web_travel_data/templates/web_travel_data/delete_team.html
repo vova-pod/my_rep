@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	<p style="color:red"><b>{% blocktrans %}Delete team {{ team.name }} and all relative information?{% endblocktrans %}</b></p>
+	<p style="color:red"><b>{% blocktrans %}Delete crew {{ team.name }} and all relative information?{% endblocktrans %}</b></p>
 
 	<form action="{% url 'web_travel_data:delete_team' team.id %}" method='post'>
 		{% csrf_token %}

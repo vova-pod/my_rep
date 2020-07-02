@@ -9,10 +9,10 @@
 
 <p>{% blocktrans %}Press row to view member's details or{% endblocktrans %} <a href="{% url 'web_travel_data:new_member' team.id %}" style="color:black"><b> {% blocktrans %}add member{% endblocktrans %}</b></a></p>
 
-<table class="table table-hover">
+<table class="table table-hover" style="text-align:center">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">{% blocktrans %}Team Member{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Crew Member{% endblocktrans %}</th>
       <th scope="col">{% blocktrans %}Contribution{% endblocktrans %}</th>
       <th scope="col">{% blocktrans %}Balance{% endblocktrans %}</th>
       <th scope="col">{% blocktrans %}Closing Balance{% endblocktrans %}</th>
@@ -28,7 +28,7 @@
     </tr>
     {% endfor %}
     <tr class="clickable-row" data-href="{% url 'web_travel_data:new_member' team.id %}">
-      <th class="btn btn-dark">{% blocktrans %}+ Add Member{% endblocktrans %}</th>
+      <th class="btn btn-dark">{% blocktrans %}Add Member{% endblocktrans %}</th>
       <td></td>
       <td></td>
       <td></td>      

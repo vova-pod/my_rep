@@ -13,12 +13,12 @@
   </ul>
 {% endif %}
 
-<b>{% blocktrans %}Choose your team to manage its balance or create a new one.{% endblocktrans %}</b>
+<b>{% blocktrans %}Choose your crew to manage its balance or create a new one.{% endblocktrans %}</b>
 	
-<table class="table table-hover">
+<table class="table table-hover" style="text-align:left">
   <thead class="thead-dark">
     <tr>      
-      <th scope="col">{% blocktrans %}Teams{% endblocktrans %}</th>
+      <th scope="col">{% blocktrans %}Crews{% endblocktrans %}</th>
       <th></th>
     </tr>
   </thead>
@@ -32,13 +32,13 @@
   </tbody>
 </table>
 
-<b>{% blocktrans %}Create new team:{% endblocktrans %}</b>
+<b>{% blocktrans %}Create new crew:{% endblocktrans %}</b>
 
   <form action="{% url 'web_travel_data:index' %}" method="post" class="form">
   {% csrf_token %}    
   {% bootstrap_form form %}
   {% buttons %}
-  <button name="submit" class="btn btn-dark">{% blocktrans %}Create team{% endblocktrans %}</button>
+  <button name="submit" class="btn btn-dark">{% blocktrans %}Create crew{% endblocktrans %}</button>
   {% endbuttons %}
   </form>
 

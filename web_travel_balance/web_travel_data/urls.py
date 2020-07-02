@@ -15,7 +15,7 @@ urlpatterns = [
     path('contributions/team_<int:team_id>/',
          views.contributions, name='contributions'),
     # Detail page for member's contributions
-    path('members/team_<int:team_id>/member_<int:member_id>/',
+    path('member/team_<int:team_id>/member_<int:member_id>/',
          views.member, name='member'),
     # Page shows all spendings
     path('expences/team_<int:team_id>/', views.expences, name='expences'),

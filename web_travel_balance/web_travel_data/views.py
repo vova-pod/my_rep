@@ -330,7 +330,7 @@ def email_member_report(request, member_id, team_id):
         if request.method == 'POST':
             html_content = render_to_string(
                 'web_travel_data/member_email.html', context)
-            subject = _('TeamWallet info for ' +
+            subject = _('CrewWallet info for ' +
                         str(member.name) + ' from ' + str(team.name))
             msg = EmailMultiAlternatives(subject, create_member_report(
                 member_id), 'no-reply@crewwallet.co', [member.email])

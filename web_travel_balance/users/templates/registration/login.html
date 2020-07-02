@@ -1,6 +1,7 @@
 {% extends "web_travel_data/base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load static %}
 
 {% block page_header %}
 
@@ -13,9 +14,10 @@
 {% endif %}
 
 <div class="jumbotron">
-	<h1 class="display-3">{% blocktrans %}Team Wallet.{% endblocktrans %}</h1>
+	<p class="display-4"><img src="{% static 'web_travel_data/7.png' %}" width="100" height="100" class="d-inline-block align-bottom" alt="">&nbsp;
+	{% blocktrans %}CrewWallet{% endblocktrans %}</p>
 
-	<p class="lead">{% blocktrans %}Create Team Wallet. Keep track of your shared budget and spendings with friends and family at home and while traveling.{% endblocktrans %}</p>
+	<p class="lead">{% blocktrans %}Create CrewWallet. Keep track of your shared budget and spendings with friends and family at home and while traveling.{% endblocktrans %}</p>
 
 	<p>{% blocktrans %}Log in with your e-mail as username:{% endblocktrans %}</p>
 
@@ -34,7 +36,7 @@
 		{% endbuttons %}
 	</form>
 
-	<p>{% blocktrans %}If you do not have an account please register.{% endblocktrans %}</p>
+	<p>{% blocktrans %}If you do not have a CrewWallet account please register.{% endblocktrans %}</p>
 
 
 	<a class="btn btn-dark" href="{% url 'users:signup' %}" role="button">{% blocktrans %}Register{% endblocktrans %} &raquo;</a>
@@ -44,6 +46,7 @@
 
 
 	<a class="btn btn-dark" href="{% url 'users:password_reset' %}" role="button">{% blocktrans %}Reset{% endblocktrans %} &raquo;</a>
+</div>
 
 
 {% endblock page_header %}	
