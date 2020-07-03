@@ -5,6 +5,11 @@ from django.http import Http404
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
+
+from django.views.generic import TemplateView
+
+from web_travel_balance import version
+
 from .models import Member, Contribution, Expence, Exeption, Team
 from .forms import MemberForm, ContributionForm, ExpenceForm, ExeptionForm, TeamForm
 from .balance_data import *
@@ -492,3 +497,14 @@ def delete_expence(request, expence_id, team_id):
     context = {'expence': expence, 'team': team, 'team_balance': team_balance,
                'team_contribution': team_contribution, 'team_expences': team_expences}
     return render(request, 'web_travel_data/delete_expence.html', context)
+
+
+class ServiceWorkerView(TemplateView):
+    template_name = 'sw.js'
+    content_type = 'application/javascript'
+    name = 'sw.js'
+
+    def get_context_data(self, **kwargs):
+        return {
+            'version': version,
+        }

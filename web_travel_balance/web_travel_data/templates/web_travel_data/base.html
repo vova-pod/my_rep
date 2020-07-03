@@ -12,7 +12,25 @@
 	{% analytical_head_top %}
 	
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="manifest" href="{% static 'manifest.json' %}">
+	<meta name="theme-color" content="#493174">
+	<link rel="apple-touch-icon" href="{% static 'web_travel_data/192.png' %}">
+
+		<script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+                    // registration worked
+                    console.log('Registration succeeded. Scope is ' + reg.scope);
+                }).catch(function(error) {
+                    // registration failed
+                    console.log('Registration failed with ' + error);
+                });
+            }
+        </script>
+
+
+
 	<link rel="stylesheet" href="{% static 'web_travel_data/table.css' %}">
 	<title>CrewWallet</title>
 	<link rel="shortcut icon" type="image/png" href="{%  static 'web_travel_data/7.png' %}">

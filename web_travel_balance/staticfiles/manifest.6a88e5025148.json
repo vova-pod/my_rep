@@ -1,0 +1,22 @@
+{
+    "name": "CrewWallet",
+    "short_name": "CrewWallet",
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#FFF",
+    "theme_color": "#493174",
+    "description": "Manage shared budget and spendings with friends and family at home and while traveling.",
+    "dir": "ltr",
+    "lang": "en-US",
+    "orientation": "portrait-primary",
+    "icons": [{
+        "src": "/static/web_travel_data/7.png",
+        "type": "image/png",
+        "sizes": "96x96"
+    }, {
+        "src": "/static/web_travel_data/7.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }]
+}

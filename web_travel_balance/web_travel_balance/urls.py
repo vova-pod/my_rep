@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
+from . import version
+from web_travel_data import views as wtd_views
 
-urlpatterns = i18n_patterns(
+
+urlpatterns = [path('sw.js', wtd_views.ServiceWorkerView.as_view(),
+                    name=wtd_views.ServiceWorkerView.name,
+                    ),
+               ]
+
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('', include('web_travel_data.urls')),
