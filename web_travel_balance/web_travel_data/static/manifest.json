@@ -1,7 +1,8 @@
 {
     "name": "CrewWallet",
     "short_name": "CrewWallet",
-    "start_url": "/",       
+    "start_url": "/",
+    "scope": "/",      
     "display": "standalone",
     "background_color": "#FFF",
     "theme_color": "#493174",

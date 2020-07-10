@@ -510,5 +510,5 @@ class ServiceWorkerView(TemplateView):
         }
 
 
-def base(request):
-    return render(request, 'web_travel_data/base.html')
+def offline(request):
+    return render(request, 'web_travel_data/offline.html')
