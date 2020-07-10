@@ -508,3 +508,7 @@ class ServiceWorkerView(TemplateView):
         return {
             'version': version,
         }
+
+
+def base(request):
+    return render(request, 'web_travel_data/base.html')

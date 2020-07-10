@@ -55,6 +55,8 @@ urlpatterns = [
     # Page to delete spending
     path('delete_expence/team_<int:team_id>/delete_expence_<int:expence_id>',
          views.delete_expence, name='delete_expence'),
+    # Page for offline view
+    path('base', views.base, name='base'),
 
 
 ]
